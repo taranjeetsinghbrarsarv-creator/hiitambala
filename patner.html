@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Partner Page | HIIT Ambala</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap');
+        
+        /* 1. Base Styles */
+        body { 
+            font-family: 'Inter', sans-serif; 
+            scroll-behavior: smooth; 
+            overflow-x: hidden;
+        }
+
+        /* 2. Custom Background Shape (Jo image mein tha) */
+        .hero-shape {
+            background: #ffe4e1; /* Light Peach/Pink */
+            border-radius: 80px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* 3. Glass Navbar */
+        .nav-glass {
+            background: rgba(10, 25, 47, 0.95); /* Dark Navy Blue */
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* 4. Professional Animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-12px); }
+        }
+        .animate-float {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .form-card {
+            background: white;
+            border-radius: 40px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
+        }
+
+        /* 5. Input Styles */
+        .custom-input {
+            background: #f8fafc;
+            border: 2px solid #e2e8f0;
+            padding: 1rem 1.5rem;
+            border-radius: 15px;
+            width: 100%;
+            transition: all 0.3s ease;
+        }
+        .custom-input:focus {
+            border-color:white;
+            background: white;
+            box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+            outline: none;
+        }
+    </style>
+</head>
+<body class="bg-white">
+
+    <nav class="nav-glass text-white sticky top-0 z-50 py-4 px-6">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            
+            <div class="flex items-center space-x-4">
+                <div class="logo-container">
+                    <img src="logo.jpg" alt="Logo" class="h-10 w-auto"> 
+                    <div class="px-3 py-1 rounded-lg font-black text-xl italic skew-x-[-10deg]">
+                        
+                    </div>
+                </div>
+                <div class="hidden sm:block">
+                    <p class="text-sm font-bold tracking-widest text-white-400 font">HIIT AMBALA</p>
+                </div>
+            </div>
+
+            <div class="hidden md:flex space-x-8 text-sm font-semibold uppercase tracking-wider">
+                <a href="index.html" class="hover:text-blue-400 transition">Home</a>
+                <a href="about.html" class="hover:text-blue-400 transition">About</a>
+                <a href="#" class="text-blue-400 border-b-2 border-blue-400 pb-1">Partners</a>
+                <a href="contact.html" class="hover:text-blue-400 transition">Contact</a>
+            </div>
+
+            <div>
+                <a href="#form-target" class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-full font-bold text-sm shadow-xl transition-all hover:scale-105 active:scale-95 flex items-center">
+                    <i class="fas fa-edit mr-2"></i> APPLY NOW
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="max-w-7xl mx-auto px-6 py-12">
+        <h4 class="text-gray-400 font-bold uppercase tracking-widest mb-2">HIIT Ambala</h4>
+        <h1 class="text-5xl md:text-7xl font-black text-slate-900 italic uppercase mb-12">
+            Partner's Proposal
+        </h1>
+
+        <section class="hero-shape flex flex-col lg:flex-row items-center gap-12 p-10 md:p-20 shadow-inner">
+            
+            <div id="form-target" class="w-full lg:w-1/2 form-card p-8 md:p-12">
+                <h2 class="text-3xl font-black text-slate-800 mb-8 flex items-center">
+                    Enquiry Form <span class="ml-4 h-1 w-20 bg-blue-600 rounded"></span>
+                </h2>
+                
+                <form id="applyForm" class="space-y-6">
+                    <div id="div-name">
+                        <label class="block text-sm font-bold text-slate-600 mb-2 ml-1 uppercase">Full Name</label>
+                        <input type="text" id="inpName" required placeholder="John Doe" class="custom-input text-lg">
+                        
+                        <button type="button" onclick="goToStep2()" class="mt-8 bg-slate-900 text-white font-black px-10 py-4 rounded-2xl hover:bg-blue-600 transition-all w-full md:w-auto shadow-lg">
+                            NEXT STEP <i class="fas fa-arrow-right ml-2"></i>
+                        </button>
+                    </div>
+
+                    <div id="div-contact" class="hidden">
+                        <label class="block text-sm font-bold text-slate-600 mb-2 ml-1 uppercase">Mobile / Email</label>
+                        <input type="text" id="inpContact" required placeholder="+91 00000-00000" class="custom-input text-lg">
+                        
+                        <div class="flex gap-4 mt-8">
+                            <button type="button" onclick="goToStep1()" class="text-slate-400 font-bold px-4">Back</button>
+                            <button type="submit" class="bg-green-600 text-white font-black px-10 py-4 rounded-2xl hover:bg-green-700 transition-all flex-1 shadow-lg">
+                                SUBMIT NOW <i class="fas fa-paper-plane ml-2"></i>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="w-full lg:w-1/2 text-slate-800">
+                <h2 class="text-4xl font-black leading-tight mb-6">
+                    Franchise Opportunity <br> 
+                    <span class="text-blue-600">Join the HIIT Legacy</span>
+                </h2>
+                <p class="text-lg text-slate-600 mb-8 leading-relaxed">
+                    Discover the exciting Franchisee Opportunity with HIIT Ambala. Hum aapko dete hain world-class curriculum aur business support taaki aap apne shehar mein education revolution la sakein.
+                </p>
+
+                <div class="space-y-4">
+                    <div class="flex items-start space-x-4">
+                        <div class="bg-white p-2 rounded-lg shadow-sm text-blue-600"><i class="fas fa-check-circle"></i></div>
+                        <p class="font-bold">Verified Business Model</p>
+                    </div>
+                    <div class="flex items-start space-x-4">
+                        <div class="bg-white p-2 rounded-lg shadow-sm text-blue-600"><i class="fas fa-check-circle"></i></div>
+                        <p class="font-bold">24/7 Marketing Support</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div class="fixed bottom-10 right-10 flex flex-col space-y-4 z-50">
+        <a href="#" class="bg-green-500 text-white w-16 h-16 rounded-full flex items-center justify-center text-3xl shadow-2xl animate-float transition-transform hover:scale-110">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+    </div>
+
+    <script>
+        function goToStep2() {
+            const name = document.getElementById('inpName').value;
+            if(name.trim() !== "") {
+                document.getElementById('div-name').classList.add('hidden');
+                document.getElementById('div-contact').classList.remove('hidden');
+            } else {
+                alert("Please enter your name first!");
+            }
+        }
+
+        function goToStep1() {
+            document.getElementById('div-contact').classList.add('hidden');
+            document.getElementById('div-name').classList.remove('hidden');
+        }
+
+        document.getElementById('applyForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert("Success! Your Proposal has been sent to HIIT Ambala.");
+            location.reload(); 
+        });
+    </script>
+    <footer class="bg-slate-900 text-gray-300 pt-16 pb-8 border-t border-gray-800">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+            
+            <div class="space-y-6">
+                <div class="flex items-center space-x-3">
+                    <div class="bg-red-600 px-3 py-1 rounded font-black text-xl italic text-white">HIIT</div>
+                    <span class="font-bold text-lg tracking-tight text-white">AMBALA</span>
+                </div>
+                <p class="text-sm leading-relaxed">
+                    HIIT Ambala is a leading skill development institute providing high-quality technical education and franchise opportunities across India.
+                </p>
+                <div class="flex space-x-4">
+                    <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-blue-600 hover:text-white transition-all"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-pink-600 hover:text-white transition-all"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-blue-400 hover:text-white transition-all"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-red-600 hover:text-white transition-all"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+
+            <div>
+                <h4 class="text-white font-bold mb-6 uppercase tracking-wider">Quick Links</h4>
+                <ul class="space-y-4 text-sm">
+                    <li><a href="#" class="hover:text-blue-400 transition flex items-center"><i class="fas fa-chevron-right text-[10px] mr-2 text-blue-500"></i> Home</a></li>
+                    <li><a href="#" class="hover:text-blue-400 transition flex items-center"><i class="fas fa-chevron-right text-[10px] mr-2 text-blue-500"></i> About Us</a></li>
+                    <li><a href="#" class="hover:text-blue-400 transition flex items-center"><i class="fas fa-chevron-right text-[10px] mr-2 text-blue-500"></i> Franchise Model</a></li>
+                    <li><a href="#" class="hover:text-blue-400 transition flex items-center"><i class="fas fa-chevron-right text-[10px] mr-2 text-blue-500"></i> Courses</a></li>
+                    <li><a href="#" class="hover:text-blue-400 transition flex items-center"><i class="fas fa-chevron-right text-[10px] mr-2 text-blue-500"></i> Contact</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="text-white font-bold mb-6 uppercase tracking-wider">Contact Us</h4>
+                <ul class="space-y-4 text-sm">
+                    <li class="flex items-start space-x-3">
+                        <i class="fas fa-map-marker-alt mt-1 text-blue-500"></i>
+                        <span>123, Education Hub, <br> Ambala Cantt, Haryana - 133001</span>
+                    </li>
+                    <li class="flex items-center space-x-3">
+                        <i class="fas fa-phone-alt text-blue-500"></i>
+                        <span>+91 98765 43210</span>
+                    </li>
+                    <li class="flex items-center space-x-3">
+                        <i class="fas fa-envelope text-blue-500"></i>
+                        <span>info@hiitambala.com</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="text-white font-bold mb-6 uppercase tracking-wider">Newsletter</h4>
+                <p class="text-xs mb-4">Subscribe karein latest updates aur franchise offers ke liye.</p>
+                <form class="flex flex-col space-y-2">
+                    <input type="email" placeholder="Your Email" class="bg-gray-800 border-none rounded-lg px-4 py-3 text-sm focus:ring-2 focus:ring-blue-600 outline-none">
+                    <button class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-lg text-sm transition-all shadow-lg">SUBSCRIBE</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-500">
+            <p>&copy; 2026 HIIT Ambala. All Rights Reserved. Designed for Excellence.</p>
+            <div class="flex space-x-6 mt-4 md:mt-0">
+                <a href="#" class="hover:text-white">Privacy Policy</a>
+                <a href="#" class="hover:text-white">Terms of Service</a>
+            </div>
+        </div>
+    </div>
+</footer>
+</body>
+</html>

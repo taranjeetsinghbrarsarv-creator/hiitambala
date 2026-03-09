@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HIIT | High-Intensity Institute of Technology</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap');
+        body { font-family: 'Plus Jakarta Sans', sans-serif; overflow-x: hidden; scroll-behavior: smooth; }
+        
+        .hero-overlay {
+            background: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.95)), 
+                        url('https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1600&q=80');
+            background-size: cover; background-position: center; background-attachment: fixed;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 1);
+            border: 1px solid #eef2f6;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .glass-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 30px 60px -12px rgba(37, 99, 235, 0.15);
+            border-color: #3b82f6;
+        }
+
+        .course-img {
+            height: 200px; width: 100%; object-fit: cover; border-radius: 20px;
+        }
+
+        #formModal, #courseDetailsModal {
+            display: none; backdrop-filter: blur(15px);
+            z-index: 999;
+        }
+
+        .hidden-course { display: none; }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #2563eb; border-radius: 10px; }
+
+
+        .nav-link-premium {
+        position: relative;
+        font-size: 0.9rem;
+        font-weight: 800;
+        color: #64748b; /* slate-500 */
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        transition: all 0.3s ease;
+    }
+
+    .nav-link-premium:hover {
+        color: #2563eb; /* blue-600 */
+    }
+
+    /* Modern Sliding Underline */
+    .nav-link-premium::after {
+        content: '';
+        position: absolute;
+        bottom: -6px;
+        left: 50%;
+        width: 0;
+        height: 3px;
+        background: #2563eb;
+        border-radius: 10px;
+        transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        transform: translateX(-50%);
+    }
+
+    .nav-link-premium:hover::after, 
+    .nav-link-premium.active::after {
+        width: 20px; /* Chhoti stylish line */
+    }
+
+    .nav-link-premium.active {
+        color: #0f172a; /* slate-900 */
+    }
+</style>
+    </style>
+</head>
+<nav class="bg-white/80 backdrop-blur-xl sticky top-0 z-[100] border-b border-slate-200/50 shadow-sm">
+    <div class="max-w-7xl mx-auto px-6 h-24 flex justify-between items-center">
+        
+        <div class="flex items-center space-x-3 flex-1">
+            <div class="relative group cursor-pointer">
+                <div class="absolute -inset-1 bg-gradient-to-r from-blue-600 to-indigo-500 rounded-full blur opacity-20 group-hover:opacity-60 transition duration-500"></div>
+                
+                <img src="logo.jpg" alt="HIIT Logo" class="relative w-14 h-14 object-contain transition-transform duration-500 group-hover:scale-110">
+            </div>
+            
+            <div class="leading-tight hidden sm:block">
+                <span class="block font-black text-2xl tracking-tighter text-slate-900">HIIT<span class="text-blue-600">.</span></span>
+                <span class="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400">Ambala Institute</span>
+            </div>
+        </div>
+
+        <div class="hidden md:flex items-center justify-center space-x-10 flex-[2]">
+            <a href="index.html" class="nav-link-premium">Home</a>
+            <a href="courses.html" class="nav-link-premium active">Courses</a>
+            <a href="cosmatology.html" class="nav-link-premium">Cosmetology</a>
+            <a href="contact.html" class="nav-link-premium">Contact</a>
+        </div>
+
+        <div class="flex justify-end flex-1">
+            <button onclick="toggleModal('formModal')" 
+                class="bg-slate-900 text-white px-8 py-3 rounded-xl font-bold hover:bg-blue-600 hover:scale-105 transition-all duration-300 shadow-xl shadow-slate-200 active:scale-95">
+                Apply Now
+            </button>
+        </div>
+    </div>
+</nav>
+
+    <section class="hero-overlay relative min-h-[80vh] flex items-center justify-center text-center px-6">
+        <div class="relative z-10" data-aos="zoom-out">
+            <h1 class="text-5xl md:text-8xl font-black text-white mb-6 tracking-tight">
+                30+ COURSES <br><span class="text-blue-500 italic">1 DESTINATION.</span>
+            </h1>
+            <p class="text-slate-300 max-w-2xl mx-auto mb-10 text-lg">
+                High-Intensity Institute of Technology: Shaping careers since 1994 with 
+                industry-standard certifications and real-world skills.
+            </p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="#courses" class="bg-white text-slate-900 px-10 py-4 rounded-2xl font-black text-lg hover:shadow-2xl transition">Explore All 30 Courses</a>
+                <button onclick="toggleModal('formModal')" class="bg-blue-600 text-white px-10 py-4 rounded-2xl font-black text-lg hover:bg-blue-700 transition">Join Demo Class</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="courses" class="py-24 px-6 max-w-7xl mx-auto">
+        <div class="text-center mb-16" data-aos="fade-up">
+            <h2 class="text-5xl font-black mb-4 text-slate-900">Professional <span class="text-blue-600">Menu</span></h2>
+            <div class="w-24 h-2 bg-blue-600 mx-auto rounded-full"></div>
+        </div>
+
+        <div id="courseContainer" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            </div>
+
+        <div class="mt-20 text-center">
+            <button id="loadMoreBtn" onclick="loadAllCourses()" class="group bg-white border-2 border-blue-600 text-blue-600 px-12 py-4 rounded-2xl font-black text-xl hover:bg-blue-600 hover:text-white transition-all duration-300">
+                View All 30+ Courses <i class="fas fa-chevron-down ml-2 group-hover:translate-y-1 transition"></i>
+            </button>
+        </div>
+    </section>
+
+    <div id="courseDetailsModal" class="fixed inset-0 flex items-center justify-center p-4 bg-slate-950/90">
+        <div class="bg-white w-full max-w-xl rounded-[2.5rem] p-8 md:p-12 overflow-y-auto max-h-[90vh]">
+            <h2 id="modalTitle" class="text-4xl font-black text-slate-900 mb-4">Course Name</h2>
+            <p id="modalCategory" class="text-blue-600 font-bold uppercase tracking-widest text-sm mb-6"></p>
+            
+            <div class="grid grid-cols-2 gap-4 mb-8">
+                <div class="bg-slate-50 p-4 rounded-2xl border border-slate-100">
+                    <p class="text-[10px] font-black text-slate-400 uppercase">Duration</p>
+                    <p id="modalDuration" class="font-bold text-slate-900"></p>
+                </div>
+                <div class="bg-slate-50 p-4 rounded-2xl border border-slate-100">
+                    <p class="text-[10px] font-black text-slate-400 uppercase">Batch Type</p>
+                    <p class="font-bold text-slate-900">Flexible/Regular</p>
+                </div>
+            </div>
+
+            <div class="mb-8">
+                <h4 class="font-black text-slate-900 mb-3"><i class="fas fa-list-check mr-2 text-blue-600"></i>What you will learn:</h4>
+                <p id="modalSyllabus" class="text-slate-600 leading-relaxed"></p>
+            </div>
+
+            <div class="flex gap-4">
+                <button onclick="toggleModal('formModal'); toggleModal('courseDetailsModal')" class="flex-1 bg-blue-600 text-white py-5 rounded-2xl font-black shadow-xl shadow-blue-200 hover:scale-105 transition">Enroll Now</button>
+                <button onclick="toggleModal('courseDetailsModal')" class="flex-1 bg-slate-100 text-slate-600 py-5 rounded-2xl font-bold">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="formModal" class="fixed inset-0 flex items-center justify-center p-4 bg-slate-950/90">
+        <div class="bg-white w-full max-w-md rounded-[2.5rem] p-10 shadow-2xl">
+            <h2 class="text-3xl font-black mb-2">Apply for Admission</h2>
+            <p class="text-slate-500 mb-8">Fill the form, our counselor will call you.</p>
+            <form onsubmit="handleForm(event)" class="space-y-4">
+                <input type="text" placeholder="Full Name" class="w-full p-4 bg-slate-50 border rounded-xl focus:ring-2 ring-blue-500 outline-none transition" required>
+                <input type="tel" placeholder="Phone Number" class="w-full p-4 bg-slate-50 border rounded-xl focus:ring-2 ring-blue-500 outline-none transition" required>
+                <select id="courseSelect" class="w-full p-4 bg-slate-50 border rounded-xl focus:ring-2 ring-blue-500 outline-none transition">
+                    <option>Select Course</option>
+                </select>
+                <button type="submit" class="w-full bg-slate-900 text-white p-5 rounded-2xl font-black text-lg hover:bg-blue-600 transition shadow-lg">Submit Application</button>
+                <button type="button" onclick="toggleModal('formModal')" class="w-full text-slate-400 font-bold py-2">Go Back</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 800, once: true });
+
+        const courses = [
+            { name: "Full Stack Development", cat: "Coding", dur: "6-12 Months", syl: "HTML, CSS, JS, React, Node, Express, MongoDB.", img: "https://images.unsplash.com/photo-1498050108023-c5249f4df085" },
+            { name: "AI & Machine Learning", cat: "Future Tech", dur: "8 Months", syl: "Python, Neural Networks, TensorFlow, NLP.", img: "https://images.unsplash.com/photo-1677442136019-21780ecad995" },
+            { name: "Nanny Course", cat: "Healthcare", dur: "6 Months", syl: "Child Care, First Aid, Patient Care, Nutrition.", img: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a" },
+            { name: "Digital Marketing", cat: "Marketing", dur: "4 Months", syl: "SEO, SEM, Social Media, Content Marketing, Ads.", img: "https://images.unsplash.com/photo-1460925895917-afdab827c52f" },
+            { name: "Data Science", cat: "Data", dur: "1 Year", syl: "Big Data, R, Python, Statistics, Tableau.", img: "https://www.mygreatlearning.com/blog/wp-content/uploads/2019/09/What-is-data-science-2.jpg" },
+            { name: "Hotel Management", cat: "Hospitality", dur: "1-2 Years", syl: "Front Office, F&B, Housekeeping, Guest Relations.", img: "https://images.unsplash.com/photo-1566073771259-6a8506099945" },
+            { name: "Python Programming", cat: "Coding", dur: "3 Months", syl: "Django, Flask, Automation, Scripting.", img: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5" },
+            { name: "Cyber Security", cat: "Networking", dur: "6 Months", syl: "Ethical Hacking, Network Security, Encryption.", img: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b" },
+            { name: "Graphic Designing", cat: "Design", dur: "6 Months", syl: "Photoshop, Illustrator, InDesign, CorelDraw.", img: "https://images.unsplash.com/photo-1626785774573-4b799315345d" },
+            { name: "Tally Prime & GST", cat: "Finance", dur: "3 Months", syl: "Accounting, Taxation, ERP, Payroll.", img: "https://images.unsplash.com/photo-1554224155-6726b3ff858f" },
+            { name: "Android App Dev", cat: "Mobile", dur: "6 Months", syl: "Kotlin, Flutter, Firebase, App Store Launch.", img: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c" },
+            { name: "Cloud Computing (AWS)", cat: "Cloud", dur: "6 Months", syl: "EC2, S3, IAM, Cloud Architecture.", img: "https://images.unsplash.com/photo-1451187580459-43490279c0fa" },
+            { name: "Java Full Stack", cat: "Coding", dur: "8 Months", syl: "Core Java, Spring Boot, Hibernate, Angular.", img: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97" },
+            { name: "Mass Communication", cat: "Media", dur: "1 Year", syl: "Journalism, PR, Video Editing, Radio.", img: "https://images.unsplash.com/photo-1529243856184-fd5465488984" },
+            { name: "Web Designing", cat: "Design", dur: "4 Months", syl: "HTML5, Tailwind, WordPress, Figma.", img: "https://images.unsplash.com/photo-1547658719-da2b51169166" },
+            { name: "Business Management", cat: "Management", dur: "1 Year", syl: "HR, Operations, Finance, Marketing Strategy.", img: "https://images.unsplash.com/photo-1507679799987-c73779587ccf" },
+            { name: "Solidworks/AutoCAD", cat: "Engineering", dur: "4 Months", syl: "2D/3D Modeling, Mechanical Design.", img: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158" },
+            { name: "UI/UX Design", cat: "Design", dur: "4 Months", syl: "User Research, Wireframing, Prototyping.", img: "https://miro.medium.com/1*hp-yfKsmzsj711iLbM8eEw.jpeg" },
+            { name: "Video Editing", cat: "Media", dur: "3 Months", syl: "Premiere Pro, After Effects, DaVinci.", img: "https://sm.pcmag.com/t/pcmag_me/gallery/t/the-best-o/the-best-online-video-editors-for-2026_d4br.1200.jpg" },
+            { name: "Hardware & Networking", cat: "Tech", dur: "6 Months", syl: "PC Troubleshooting, Server Management.", img: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31" },
+            { name: "C/C++ Programming", cat: "Coding", dur: "4 Months", syl: "Data Structures, Logic Building, OOPS.", img: "https://images.unsplash.com/photo-1614064641938-3bbee52942c7" },
+            { name: "Excel Mastery", cat: "Office", dur: "2 Months", syl: "Macros, Pivot Tables, Data Analysis.", img: "https://learn.edure.in/s/store/courses/621a064f0cf2adc892e3c806/cover.jpg?v=2" },
+            { name: "Soft Skills & English", cat: "Growth", dur: "3 Months", syl: "Communication, Interview Prep, Confidence.", img: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f" },
+            { name: "Stock Market Trading", cat: "Finance", dur: "3 Months", syl: "Technical Analysis, Risk Management.", img: "https://cdn.educba.com/academy/wp-content/uploads/2016/07/Stock-Market-Trading.jpg" },
+            { name: "PHP/MySQL Development", cat: "Coding", dur: "4 Months", syl: "Backend Development, Database Design.", img: "https://5.imimg.com/data5/VP/JD/GLADMIN-5327883/php-mysql-development-services-500x500.jpg" },
+            { name: "Computer Basic (DCA)", cat: "Office", dur: "6 Months", syl: "Windows, Office, Internet, Printing.", img: "https://images.unsplash.com/photo-1496181133206-80ce9b88a853" },
+            { name: "Mobile Repairing", cat: "Technical", dur: "4 Months", syl: "Circuit Repairing, Software Flash.", img: "https://images.unsplash.com/photo-1512428559087-560fa5ceab42" },
+            { name: "Photography", cat: "Media", dur: "4 Months", syl: "DSLR, Lighting, Composition, Lightroom.", img: "https://images.unsplash.com/photo-1516035069371-29a1b244cc32" },
+            { name: "Fashion Designing", cat: "Creative", dur: "1 Year", syl: "Sketching, Pattern Making, Textiles.", img: "https://images.unsplash.com/photo-1558769132-cb1aea458c5e" },
+            { name: "Travel & Tourism", cat: "Hospitality", dur: "6 Months", syl: "Ticketing, Tour Planning, Visa Process.", img: "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800" }
+        ];
+
+        function renderCourses(limit) {
+            const container = document.getElementById('courseContainer');
+            const select = document.getElementById('courseSelect');
+            container.innerHTML = '';
+            
+            courses.forEach((course, index) => {
+                // Populate select dropdown
+                if(index === 0) select.innerHTML = '<option>Select Course</option>';
+                const opt = document.createElement('option');
+                opt.value = course.name;
+                opt.innerText = course.name;
+                select.appendChild(opt);
+
+                // Build Card
+                const card = `
+                    <div class="glass-card p-5 rounded-[2.5rem] ${index >= limit ? 'hidden-course' : ''}" 
+                         data-aos="fade-up" data-aos-delay="${(index % 3) * 100}">
+                        <img src="${course.img}?auto=format&fit=crop&w=600&q=80" class="course-img" alt="${course.name}">
+                        <div class="mt-6 px-2">
+                            <span class="text-blue-600 font-bold text-[10px] uppercase tracking-widest">${course.cat}</span>
+                            <h3 class="font-black text-2xl text-slate-900 mt-1">${course.name}</h3>
+                            <p class="text-slate-500 text-sm mt-2 line-clamp-2">${course.syl}</p>
+                            <div class="mt-6 flex items-center justify-between border-t pt-5 border-slate-100">
+                                <button onclick="showCourse('${course.name}', '${course.dur}', '${course.cat}', '${course.syl}')" 
+                                        class="text-slate-900 font-bold text-sm hover:text-blue-600 transition">Syllabus <i class="fas fa-arrow-right ml-1"></i></button>
+                                <button onclick="toggleModal('formModal')" class="bg-slate-100 text-slate-900 px-4 py-2 rounded-xl text-xs font-bold hover:bg-blue-600 hover:text-white transition">Quick Apply</button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                container.innerHTML += card;
+            });
+        }
+
+        function loadAllCourses() {
+            renderCourses(30);
+            document.getElementById('loadMoreBtn').style.display = 'none';
+        }
+
+        function toggleModal(id) {
+            const m = document.getElementById(id);
+            m.style.display = (m.style.display === 'flex') ? 'none' : 'flex';
+            document.body.style.overflow = (m.style.display === 'flex') ? 'hidden' : 'auto';
+        }
+
+        function showCourse(name, dur, cat, syl) {
+            document.getElementById('modalTitle').innerText = name;
+            document.getElementById('modalDuration').innerText = dur;
+            document.getElementById('modalCategory').innerText = cat;
+            document.getElementById('modalSyllabus').innerText = syl;
+            toggleModal('courseDetailsModal');
+        }
+
+        function handleForm(e) {
+            e.preventDefault();
+            alert("Thank you! Application for " + document.getElementById('courseSelect').value + " submitted. Our counselor will contact you soon.");
+            toggleModal('formModal');
+        }
+
+        // Initial Load
+        renderCourses(9);
+    </script>
+</body>
+</html>

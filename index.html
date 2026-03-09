@@ -1,0 +1,1767 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HIIT Ambala | High-Intensity Institute of Technology</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    
+    <style>
+    
+    @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap');
+
+    :root {
+        --primary-bg: #050b1a; /* Dark Navy Blue */
+        --nav-bg: rgba(10, 25, 47, 0.85); 
+        --accent-green: #00f2fe; /* Cyan/Green Accent */
+        --hiit-red: #ff3e3e;
+        --text-gold: #e2e8f0;
+        --glass-border: rgba(255, 255, 255, 0.1);
+        --smooth: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Outfit', sans-serif;
+    }
+
+    /* --- High-Level Nav Bar --- */
+    .premium-nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 6%;
+        height: 85px;
+        background: var(--nav-bg);
+        backdrop-filter: blur(15px);
+        -webkit-backdrop-filter: blur(15px);
+        border-bottom: 1px solid var(--glass-border);
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 10000;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    /* Professional Logo Design */
+    .logo-wrapper {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        text-decoration: none;
+    }
+
+    .logo-badge {
+        background: var(--hiit-red);
+        color: #fff;
+        padding: 8px 15px;
+        font-weight: 800;
+        font-size: 1.4rem;
+        clip-path: polygon(15% 0%, 100% 0%, 85% 100%, 0% 100%);
+        box-shadow: 3px 3px 0px var(--accent-green);
+        transition: var(--smooth);
+    }
+
+    .logo-text {
+        color: white;
+        font-weight: 700;
+        font-size: 1.2rem;
+        letter-spacing: 1px;
+    }
+
+    /* Navigation Links */
+    .nav-links {
+        display: flex;
+        list-style: none;
+        align-items: center;
+        gap: 25px;
+    }
+
+    .nav-links li {
+        position: relative;
+    }
+
+    .nav-links li a {
+        text-decoration: none;
+        color: var(--text-gold);
+        font-size: 0.95rem;
+        font-weight: 400;
+        transition: var(--smooth);
+        display: flex;
+        align-items: center;
+        gap: 5px;
+    }
+
+    .nav-links li a:hover {
+        color: var(--accent-green);
+    }
+
+    /* Modern Hover Underline */
+    .nav-links li a::after {
+        content: '';
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: linear-gradient(90deg, var(--hiit-red), var(--accent-green));
+        transition: var(--smooth);
+    }
+
+    .nav-links li a:hover::after {
+        width: 100%;
+    }
+
+    /* --- Special Student Dropdown --- */
+    .student-trigger {
+        background: rgba(0, 242, 254, 0.1);
+        border: 1px solid var(--accent-green);
+        padding: 10px 20px !important;
+        border-radius: 50px;
+        color: var(--accent-green) !important;
+        font-weight: 600 !important;
+    }
+
+    .student-trigger:hover {
+        background: var(--accent-green);
+        color: #000 !important;
+        box-shadow: 0 0 20px rgba(0, 242, 254, 0.4);
+    }
+
+    .dropdown-content {
+        position: absolute;
+        top: 130%;
+        right: 0;
+        background: #0f172a;
+        min-width: 250px;
+        border-radius: 12px;
+        overflow: hidden;
+        border: 1px solid var(--glass-border);
+        box-shadow: 0 15px 35px rgba(0,0,0,0.8);
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(15px);
+        transition: var(--smooth);
+    }
+
+    .nav-links li:hover .dropdown-content {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+
+    .dropdown-content a {
+        padding: 14px 20px;
+        font-size: 0.85rem;
+        color: #94a3b8;
+        border-bottom: 1px solid rgba(255,255,255,0.03);
+        display: block;
+        transition: var(--smooth);
+    }
+
+    .dropdown-content a:hover {
+        background: rgba(255, 255, 255, 0.05);
+        color: var(--accent-green) !important;
+        padding-left: 30px;
+    }
+
+    /* Notification Icon Glow */
+    .notify-bell {
+        color: var(--accent-green);
+        font-size: 1.2rem;
+        cursor: pointer;
+        animation: pulse 2s infinite;
+    }
+
+     /* --- HIGH-LEVEL FORM CSS --- */
+    .premium-form-card {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(20px);
+        border-radius: 30px;
+        padding: 3rem;
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 0 40px rgba(0, 242, 254, 0.2);
+        transform: perspective(1000px) rotateY(-2deg);
+        border: none !important;
+    }
+
+    .modern-input {
+        width: 100%;
+        padding: 12px 0;
+        background: transparent;
+        border: none;
+        border-bottom: 2px solid #e2e8f0;
+        font-size: 1rem;
+        font-weight: 500;
+        color: #1e293b;
+        outline: none;
+        transition: all 0.3s ease;
+    }
+
+    .modern-input:focus {
+        border-bottom: 2px solid #3b82f6;
+        padding-left: 10px;
+    }
+
+    /* Submit Button */
+    .btn-glow {
+        position: relative;
+        overflow: hidden;
+        background: linear-gradient(90deg, #1e40af, #3b82f6);
+        transition: all 0.3s ease;
+        border: none;
+    }
+
+    /* Tech Blobs */
+    .tech-blob {
+        position: absolute; width: 300px; height: 300px;
+        background: radial-gradient(circle, rgba(0,242,254,0.3) 0%, transparent 70%);
+        filter: blur(50px); animation: float 10s infinite alternate;
+        z-index: 1;
+    }
+
+    /* NEW: Stat Counter Styling */
+    .stat-ribbon {
+        background: #0a192f;
+        border-top: 1px solid var(--glass-border);
+        border-bottom: 1px solid var(--glass-border);
+        position: relative;
+        z-index: 20;
+    }
+    
+    .stat-box h2 {
+        background: linear-gradient(to bottom, #fff, var(--accent-green));
+        /* -webkit-background-clip: text; */
+        -webkit-text-fill-color: transparent;
+        -webkit-background-clip: text;
+    }
+
+    @keyframes pulse {
+        0% { transform: scale(1); opacity: 1; }
+        50% { transform: scale(1.1); opacity: 0.7; }
+        100% { transform: scale(1); opacity: 1; }
+    }
+
+    /* --- Professional University & Animation Effects --- */
+
+/* 1. Logo & Nav Hover Effects */
+.logo-badge {
+    transition: var(--smooth);
+    cursor: pointer;
+}
+.logo-badge:hover {
+    transform: skewX(-5deg) scale(1.05);
+    box-shadow: 5px 5px 0px var(--accent-green);
+}
+
+/* 2. University Collage Section */
+.collage-wrapper {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    perspective: 1000px;
+}
+
+.img-frame {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Image hover effect: Smooth lift and brightness */
+.img-frame:hover {
+    transform: translateY(-10px) rotateY(5deg);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    filter: contrast(1.1);
+}
+
+/* 3. Golden Excellence Badge Animation */
+.uni-badge-gold {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #111111;
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    border: 8px solid #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #d4af37; /* Royal Gold */
+    z-index: 10;
+    box-shadow: 0 0 30px rgba(0,0,0,0.3);
+    animation: badgeFloat 4s ease-in-out infinite;
+}
+
+@keyframes badgeFloat {
+    0%, 100% { transform: translate(-50%, -50%) scale(1); }
+    50% { transform: translate(-50%, -55%) scale(1.05); }
+}
+
+/* 4. Professional Feature Pills (University Tags) */
+.feature-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 20px;
+    border-radius: 6px;
+    color: #fff;
+    font-weight: 600;
+    font-size: 0.85rem;
+    margin: 6px;
+    cursor: default;
+    transition: all 0.3s ease;
+    border-left: 0px solid rgba(255,255,255,0.5);
+}
+
+.feature-pill:hover {
+    transform: translateX(10px);
+    border-left: 5px solid rgba(255,255,255,0.8);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.feature-pill i {
+    font-size: 1.1rem;
+    animation: iconPulse 2s infinite;
+}
+
+@keyframes iconPulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.6; }
+    100% { opacity: 1; }
+}
+
+/* 5. Certificate Professional Effect */
+.cert-container {
+    position: relative;
+    padding: 10px;
+    background: #fff;
+    box-shadow: 0 40px 80px rgba(0,0,0,0.15);
+    border-radius: 4px;
+    overflow: hidden;
+    transition: all 0.6s ease;
+}
+
+.cert-container img {
+    width: 100%;
+    transition: transform 0.8s ease, filter 0.8s ease;
+    filter: grayscale(40%);
+}
+
+.cert-container:hover img {
+    transform: scale(1.05);
+    filter: grayscale(0%);
+}
+
+/* Trust Badge (ISO/IAO) */
+.trust-badge {
+    position: absolute;
+    bottom: 20px;
+    right: -10px;
+    background: var(--hiit-red);
+    color: white;
+    padding: 10px 25px;
+    font-weight: 900;
+    transform: rotate(-5deg);
+    box-shadow: 5px 5px 15px rgba(0,0,0,0.2);
+    z-index: 15;
+}
+
+/* 6. Section Heading Effects */
+.section-line {
+    width: 80px;
+    height: 4px;
+    background: var(--hiit-red);
+    margin: 15px auto;
+    border-radius: 2px;
+}
+
+/* Text Reveal Animation for Welcome Section */
+.reveal-text {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.8s ease-out;
+}
+.reveal-text.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@keyframes bounce-slow {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+.animate-bounce-slow {
+    animation: bounce-slow 3s ease-in-out infinite;
+}
+
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700;900&display=swap');
+
+:root {
+    --primary: #0f172a; /* Deep Navy */
+    --accent: #3b82f6;  /* Electric Blue */
+    --gold: #fbbf24;    /* Premium Gold */
+    --glass: rgba(255, 255, 255, 0.8);
+}
+
+.premium-leadership {
+    padding: 100px 5%;
+    background: radial-gradient(circle at top right, #f1f5f9, #cbd5e1);
+    font-family: 'Poppins', sans-serif;
+}
+
+.main-title {
+    text-align: center;
+    font-size: 3rem;
+    font-weight: 900;
+    color: var(--primary);
+    margin-bottom: 80px;
+    text-transform: uppercase;
+}
+
+.main-title span { color: var(--accent); }
+
+/* Layout Structure */
+.leadership-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 100px;
+    margin-bottom: 120px;
+    position: relative;
+}
+
+.reverse { flex-direction: row-reverse; }
+
+/* Advanced Image Section */
+.image-wrapper {
+    position: relative;
+    width: 400px;
+    height: 500px;
+    z-index: 2;
+}
+
+.image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 30px;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.2);
+    z-index: 2;
+    position: relative;
+    transition: 0.5s;
+}
+
+/* Floating Blob Effect */
+.blob-bg {
+    position: absolute;
+    width: 450px;
+    height: 450px;
+    background: var(--accent);
+    filter: blur(80px);
+    opacity: 0.3;
+    top: -20px;
+    left: -20px;
+    border-radius: 50%;
+    z-index: 1;
+    animation: pulse 8s infinite alternate;
+}
+
+.blob-bg.secondary { background: var(--gold); }
+
+/* Glassmorphism Content Box */
+.content-glass {
+    max-width: 500px;
+    background: var(--glass);
+    backdrop-filter: blur(15px);
+    padding: 50px;
+    border-radius: 40px;
+    border: 1px solid rgba(255,255,255,0.4);
+    box-shadow: 0 25px 50px rgba(0,0,0,0.05);
+    position: relative;
+    z-index: 3;
+    margin-left: -80px; /* Overlap effect */
+}
+
+.reverse .content-glass { margin-left: 0; margin-right: -80px; }
+
+.rank-label {
+    background: var(--primary);
+    color: white;
+    padding: 5px 20px;
+    border-radius: 5px;
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    font-weight: 700;
+}
+
+.content-glass h3 {
+    font-size: 2.5rem;
+    margin: 15px 0;
+    color: var(--primary);
+}
+
+.bio {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #475569;
+    border-left: 4px solid var(--accent);
+    padding-left: 20px;
+    margin: 20px 0;
+}
+
+/* Hover Animations */
+.leadership-box:hover .image-wrapper img {
+    transform: translateY(-15px) scale(1.02);
+}
+
+.exp-tag {
+    position: absolute;
+    top: 20px;
+    right: -30px;
+    background: var(--gold);
+    color: var(--primary);
+    padding: 10px 25px;
+    font-weight: 900;
+    transform: rotate(5deg);
+    box-shadow: 5px 5px 15px rgba(0,0,0,0.1);
+    border-radius: 10px;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.2); opacity: 0.5; }
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+    .leadership-box, .reverse { 
+        flex-direction: column; 
+        gap: 40px; 
+        text-align: center;
+    }
+    .content-glass { margin: 0; padding: 30px; }
+    .image-wrapper { width: 300px; height: 380px; }
+}
+
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap');
+
+.prime-recruiters {
+    padding: 100px 0;
+    background: #0a0e17; /* Deep Dark Professional Theme */
+    font-family: 'Montserrat', sans-serif;
+    position: relative;
+    overflow: hidden;
+    color: white;
+}
+
+/* Background Glowing Effect */
+.bg-gradient-blur {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(0, 70, 139, 0.4) 0%, transparent 70%);
+    transform: translate(-50%, -50%);
+    z-index: 0;
+}
+
+.header-content {
+    text-align: center;
+    position: relative;
+    z-index: 2;
+    margin-bottom: 60px;
+}
+
+.badge {
+    background: #e63946;
+    padding: 5px 15px;
+    border-radius: 50px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.title {
+    font-size: 3.5rem;
+    margin-top: 15px;
+    font-weight: 900;
+}
+
+.text-gradient {
+    background: linear-gradient(to right, #ffffff, #00d2ff);
+    /* -webkit-background-clip: text; */
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+}
+
+/* Diamond Grid System */
+.diamond-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: -20px; /* Overlap effect */
+    z-index: 2;
+    position: relative;
+}
+
+.diamond-row {
+    display: flex;
+    justify-content: center;
+    margin-top: -35px; /* Perfect Diamond Fitting */
+}
+
+.diamond-card {
+    width: 140px;
+    height: 140px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transform: rotate(45deg);
+    margin: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.5s all cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    backdrop-filter: blur(10px);
+    overflow: hidden;
+}
+
+.diamond-card:hover {
+    background: rgba(255, 255, 255, 1);
+    transform: rotate(45deg) scale(1.15);
+    z-index: 10;
+    box-shadow: 0 0 30px rgba(0, 210, 255, 0.5);
+    border-color: #00d2ff;
+}
+
+.diamond-card .inner {
+    transform: rotate(-45deg); /* Reverses the logo rotation */
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.inner img {
+    max-width: 100%;
+    filter: brightness(0) invert(1); /* Logos will be white for professional look */
+    transition: 0.3s;
+}
+
+.diamond-card:hover .inner img {
+    filter: brightness(1) invert(0); /* On hover, original logo color shows */
+}
+
+/* Specific Animations */
+@keyframes float {
+    0% { transform: translateY(0px) rotate(45deg); }
+    50% { transform: translateY(-15px) rotate(45deg); }
+    100% { transform: translateY(0px) rotate(45deg); }
+}
+
+.diamond-card:nth-child(even) {
+    animation: float 4s ease-in-out infinite;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .diamond-card { width: 100px; height: 100px; margin: 15px; }
+    .title { font-size: 2rem; }
+}
+
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&display=swap');
+
+.faq-section {
+    padding: 80px 5%;
+    background: #fdfdfd;
+    font-family: 'Outfit', sans-serif;
+}
+
+.faq-container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.faq-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.top-tag {
+    background: #e63946;
+    color: white;
+    padding: 5px 15px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+
+.faq-header h2 {
+    font-size: 2.5rem;
+    margin: 20px 0;
+    color: #1a237e;
+}
+
+.faq-header h2 span { color: #e63946; }
+
+/* Accordion Logic */
+.accordion {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.accordion-item {
+    border: 1px solid #eee;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.02);
+    overflow: hidden;
+    transition: 0.3s;
+}
+
+.accordion-header {
+    padding: 22px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    background: white;
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: #333;
+}
+
+.accordion-header:hover {
+    background: #f9f9f9;
+}
+
+.icon {
+    font-size: 1.5rem;
+    color: #1a237e;
+    transition: 0.3s;
+}
+
+/* Content Panel */
+.accordion-body {
+    max-height: 0; /* Shuru mein band rahega */
+    overflow: hidden;
+    transition: all 0.4s ease-out;
+    background: #fcfcfc;
+}
+
+.accordion-body p {
+    padding: 0 30px 25px 30px;
+    color: #666;
+    line-height: 1.8;
+    font-size: 1rem;
+}
+
+/* Jab click hoga tab ye class add hogi */
+.accordion-item.active {
+    border-color: #1a237e;
+}
+
+.accordion-item.active .accordion-body {
+    max-height: 500px; /* Jawab dikhane ke liye height badh jayegi */
+}
+
+.accordion-item.active .icon {
+    transform: rotate(45deg); /* Plus 'X' ban jayega */
+    color: #e63946;
+}
+
+
+:root {
+    --dark-blue: #0a1128;
+    --accent-blue: #00468b;
+    --wa-green: #25d366;
+    --call-blue: #34b7f1;
+}
+
+.main-footer {
+    background-color: var(--dark-blue);
+    color: #ffffff;
+    padding: 80px 0 20px 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 40px;
+    padding: 0 20px;
+}
+
+.footer-box h3 {
+    font-size: 1.4rem;
+    margin-bottom: 25px;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.footer-box h3::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 50px;
+    height: 3px;
+    background: #00ffcc;
+}
+
+.footer-logo span { color: #00ffcc; }
+
+.footer-box ul { list-style: none; padding: 0; }
+.footer-box ul li { margin-bottom: 12px; }
+.footer-box ul li a {
+    color: #cbd5e1;
+    text-decoration: none;
+    transition: 0.3s;
+    display: flex;
+    align-items: center;
+}
+
+.footer-box ul li a:hover {
+    color: #00ffcc;
+    padding-left: 10px;
+}
+
+.footer-socials { display: flex; gap: 15px; margin-top: 20px; }
+.footer-socials a {
+    width: 40px;
+    height: 40px;
+    background: rgba(255,255,255,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    color: white;
+    transition: 0.4s;
+}
+
+.footer-socials a:hover { background: var(--accent-blue); transform: translateY(-5px); }
+
+/* Floating Buttons Style */
+.floating-container {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    z-index: 1000;
+}
+
+.float-btn {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 25px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    transition: 0.3s;
+    border: none;
+    cursor: pointer;
+}
+
+.whatsapp { background-color: var(--wa-green); }
+.phone { background-color: var(--call-blue); }
+.scroll-top { background-color: #e63946; display: none; } /* Initially Hidden */
+
+.float-btn:hover { transform: scale(1.1); }
+
+/* Footer Bottom */
+.footer-bottom {
+    text-align: center;
+    margin-top: 50px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 20px;
+    font-size: 0.9rem;
+    color: #94a3b8;
+}
+
+@media (max-width: 768px) {
+    .footer-container { grid-template-columns: 1fr; text-align: center; }
+    .footer-box h3::after { left: 50%; transform: translateX(-50%); }
+    .footer-socials { justify-content: center; }
+}
+
+/* Developer Section Styling */
+.footer-bottom {
+    margin-top: 50px;
+    background: #020617;
+    padding: 20px 0;
+    border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+
+.premium-nav {
+    display: flex;
+    align-items: center;
+    padding: 10px 40px;
+
+}
+
+.logo-wrapper {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.hiit img {
+    width: 60px;      /* Logo size */
+    height: auto;
+    margin-right: 12px;
+    transition: 0.4s;
+}
+
+.hiit img:hover {
+    transform: scale(1.1);
+}
+
+.logo-text {
+    color: white;
+    font-size: 1.1rem;
+    font-weight: bold;
+    line-height: 1.2;
+}
+
+.logo-text span {
+    font-size: 0.8rem;
+    color: #888;
+}
+
+/* Custom Toast Notification Styling */
+#toast-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 9999;
+}
+
+.toast-msg {
+    background: #ffffff;
+    color: #1e293b;
+    padding: 16px 24px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    border-left: 5px solid #2563eb; /* Blue accent */
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-weight: 600;
+    font-size: 14px;
+    transform: translateX(120%);
+    transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.toast-msg.show {
+    transform: translateX(0);
+}
+
+.toast-msg.success { border-left-color: #10b981; }
+.toast-msg.error { border-left-color: #ef4444; }
+
+.premium-nav{
+display:flex;
+justify-content:space-between;
+align-items:center;
+background:#021b3a;
+padding:15px 30px;
+color:white;
+}
+
+.logo-wrapper{
+display:flex;
+align-items:center;
+gap:10px;
+text-decoration:none;
+color:white;
+}
+
+.logo-text span{
+font-size:12px;
+color:#aaa;
+}
+
+.nav-links{
+display:flex;
+gap:25px;
+list-style:none;
+}
+
+.nav-links a{
+text-decoration:none;
+color:white;
+font-size:15px;
+}
+
+.menu-btn{
+display:none;
+flex-direction:column;
+gap:5px;
+cursor:pointer;
+}
+
+.menu-btn span{
+width:25px;
+height:3px;
+background:white;
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+.menu-btn{
+display:flex;
+}
+
+.nav-links{
+display:none;
+flex-direction:column;
+position:absolute;
+top:70px;
+right:0;
+background:#021b3a;
+width:200px;
+padding:20px;
+}
+
+.nav-links.active{
+display:flex;
+}
+
+}
+</style>
+<body>
+    <div id="toast-container"></div>
+
+<nav class="premium-nav">
+    <a href="" class="logo-wrapper">
+        <div class="hiit">
+           <img src="logo.jpg" alt="Haryana Institute Logo">
+        </div>
+        </div>
+        <div class="logo-text">HARYANA INSTITUTE <br><span style="font-size: 0.8rem; color: #888;">OF INFO TECH</span></div>
+    </a>
+
+    <button id="menu-btn" class="menu-btn">
+  <span></span>
+  <span></span>
+  <span></span>
+</button>
+
+<ul class="nav-links" id="nav-links"></ul>
+
+    <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="gallry.html">Gallery</a></li>
+        <li><a href="coures.html">Courses</a></li>
+        <li><a href="cosmatology.html">Cosmetology</a></li>
+        <li><a href="#">Blogs</a></li>
+        <li><a href="team.html">Team</a></li>
+        <li><a href="patner.html">Partner</a></li>
+        <li class="student-li">
+            <a href="#" class="student-trigger">Student Section ▾</a>
+            <div class="dropdown-content">
+                <a href="admission.html">Admissions 2026</a>
+                <a href="result.html">Check Results</a>
+                <a href="#">Academic Calendar</a>
+                <a href="#">Certificate Request</a>
+                <a href="#">Examination Portal</a>
+                <a href="#">Placement Cell</a>
+            </div>
+        </li>
+        <li><span class="notify-bell">🔔</span></li>
+    </ul>
+</nav>
+
+<div style="margin-top: 100px;"></div>
+    <section id="home" class="relative min-h-screen flex items-center pt-10 pb-12">
+        <div class="tech-blob top-20 left-10"></div>
+        <div class="tech-blob bottom-20 right-10" style="animation-delay: -5s"></div>
+        
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1920&q=80" class="w-full h-full object-cover" alt="Background">
+            <div class="absolute inset-0 bg-slate-950/85"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-6 relative z-10 grid lg:grid-cols-2 gap-16 items-center">
+            <div class="animate__animated animate__fadeInUp">
+                <span class="bg-blue-600/30 text-blue-400 border border-blue-400/30 px-5 py-1.5 rounded-full text-xs font-black uppercase tracking-[0.2em] mb-8 inline-block">Future of Tech in Ambala</span>
+                <h1 class="text-6xl md:text-8xl font-black text-white mb-8 leading-[1.1] tracking-tight">
+                    Student's <br> <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-400">Growth</span> at HIIT.
+                </h1>
+                <p class="text-xl text-slate-400 mb-10 leading-relaxed max-w-lg">Boost your skills at Haryana Institute of Information Technology, Ambala. Gain career-focused training through expert-led programs in IT, Accounting, Cosmetology, and more. Join us today!</p>
+                <div class="flex items-center space-x-6 text-white bg-white/5 p-4 rounded-2xl border border-white/10 backdrop-blur-sm inline-flex">
+                    <div class="flex -space-x-3">
+                        <img src="https://i.pravatar.cc/150?u=1" class="w-12 h-12 rounded-full border-2 border-slate-900">
+                        <img src="https://i.pravatar.cc/150?u=2" class="w-12 h-12 rounded-full border-2 border-slate-900">
+                        <img src="https://i.pravatar.cc/150?u=3" class="w-12 h-12 rounded-full border-2 border-slate-900">
+                    </div>
+                    <p class="text-sm font-bold tracking-wide">1500+ Students Placed <br><span class="text-blue-400">From Ambala City</span></p>
+                </div>
+            </div>
+
+            <div class="premium-form-card animate__animated animate__fadeInRight">
+                <h3 class="text-3xl font-black mb-2 text-slate-800 tracking-tight">Book Demo Class</h3>
+                <p class="text-slate-500 mb-8 text-sm font-medium italic">"Experience high-intensity learning for free!"</p>
+                <form class="space-y-5">
+                    <input type="text" placeholder="Your Name" class="modern-input">
+                    <input type="tel" placeholder="Phone Number" class="modern-input">
+                    <select class="w-full p-4 rounded-2xl border-none outline-none bg-slate-100 text-slate-600 font-medium">
+                        <option>Choose Course</option>
+                        <option>Full Stack Web Dev</option>
+                        <option>Graphic Design</option>
+                        <option>Cyber Security</option>
+                        <option>Data Science</option>
+                    </select>
+
+                     <!-- Demo Type Added -->
+        <select class="w-full p-4 rounded-2xl border-none outline-none bg-slate-100 text-slate-600 font-medium">
+            <option>Choose Demo Type</option>
+            <option>Online </option>
+            <option>Offline </option>
+        </select>
+                    
+                    <button class="w-full btn-glow text-white p-5 rounded-2xl font-black text-lg shadow-xl shadow-blue-200 tracking-wide uppercase">Reserve My Seat</button>
+                </form>
+            </div>
+        </div>
+    </section>
+    
+    <section class="stat-ribbon py-16 px-6 bg-gray-900">
+    <div class="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8">
+        
+        <div class="stat-box text-center">
+            <h2 class="text-5xl font-black mb-2 text-white">1L+</h2>
+            <p class="text-gray-300 font-bold uppercase tracking-wide text-sm">
+                Students Happy
+            </p>
+        </div>
+
+        <div class="stat-box text-center">
+            <h2 class="text-5xl font-black mb-2 text-white">80K+</h2>
+            <p class="text-gray-300 font-bold uppercase tracking-wide text-sm">
+                Successful Placement
+            </p>
+        </div>
+
+        <div class="stat-box text-center">
+            <h2 class="text-5xl font-black mb-2 text-white">500+</h2>
+            <p class="text-gray-300 font-bold uppercase tracking-wide text-sm">
+                Services Provided
+            </p>
+        </div>
+
+        <div class="stat-box text-center">
+            <h2 class="text-5xl font-black mb-2 text-white">120+</h2>
+            <p class="text-gray-300 font-bold uppercase tracking-wide text-sm">
+                Expert Programs
+            </p>
+        </div>
+
+    </div>
+</section>
+
+    <section class="py-24 bg-white px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-black mb-4">Master In-Demand <span class="text-blue-600">Skills</span></h2>
+                <p class="text-slate-500 font-medium">Ambala's most advanced curriculum designed by industry experts.</p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="glass-card p-8 rounded-[2.5rem] border-b-4 border-blue-600 shadow-xl">
+                    <div class="w-14 h-14 bg-blue-100 rounded-2xl flex items-center justify-center text-blue-600 mb-6 text-2xl">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h4 class="text-2xl font-bold mb-3">Full Stack Dev</h4>
+                    <p class="text-slate-600 text-sm mb-6">Master React, Node.js, and Database management with 10+ live projects.</p>
+                    <a href="coures.html" class="text-blue-600 font-bold flex items-center gap-2 hover:gap-4 transition-all">Learn More <i class="fas fa-arrow-right text-xs"></i></a>
+                </div>
+                <div class="glass-card p-8 rounded-[2.5rem] border-b-4 border-indigo-600 shadow-xl">
+                    <div class="w-14 h-14 bg-indigo-100 rounded-2xl flex items-center justify-center text-indigo-600 mb-6 text-2xl">
+                        <i class="fas fa-bezier-curve"></i>
+                    </div>
+                    <h4 class="text-2xl font-bold mb-3">UI/UX Design</h4>
+                    <p class="text-slate-600 text-sm mb-6">Learn Figma, Adobe XD and User Psychology to create stunning interfaces.</p>
+                    <a href="coures.html" class="text-indigo-600 font-bold flex items-center gap-2 hover:gap-4 transition-all">Learn More <i class="fas fa-arrow-right text-xs"></i></a>
+                </div>
+                <div class="glass-card p-8 rounded-[2.5rem] border-b-4 border-emerald-600 shadow-xl">
+                    <div class="w-14 h-14 bg-emerald-100 rounded-2xl flex items-center justify-center text-emerald-600 mb-6 text-2xl">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h4 class="text-2xl font-bold mb-3">Cyber Security</h4>
+                    <p class="text-slate-600 text-sm mb-6">Ethical hacking and network security to protect digital assets globally.</p>
+                    <a href="coures.html" class="text-emerald-600 font-bold flex items-center gap-2 hover:gap-4 transition-all">Learn More <i class="fas fa-arrow-right text-xs"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="galleryModal" onclick="closeGallery()" class="fixed inset-0 z-[1000] bg-black/95 hidden flex items-center justify-center p-10 cursor-pointer">
+        <img id="modalImg" src="" class="max-w-full max-h-full rounded-2xl shadow-2xl animate__animated animate__zoomIn">
+        <p class="absolute top-10 right-10 text-white text-4xl"><i class="fas fa-times"></i></p>
+    </div>
+
+    <section class="uni-section px-6">
+    <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-20 items-center">
+        
+        <div class="collage-wrapper">
+            <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=500" class="img-frame" alt="Campus Life">
+            <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=500" class="img-frame mt-10" alt="Learning">
+            <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=500" class="img-frame -mt-10" alt="Students">
+            <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?w=500" class="img-frame" alt="Success">
+            
+            <div class="uni-badge-gold">
+                <p class="text-[10px] tracking-[3px] uppercase text-white font-light">Celebrating</p>
+                <h2 class="text-5xl font-serif font-bold">32</h2>
+                <p class="text-[11px] font-bold tracking-widest">YEARS OF EXCELLENCE</p>
+            </div>
+        </div>
+
+        <div>
+            <h2 class="text-4xl font-bold text-slate-900 mb-6 leading-tight">Welcome to HIIT Ambala — <br><span class="text-blue-700 font-light italic">Empowering Global Careers</span></h2>
+            <p class="text-slate-600 mb-10 text-lg leading-relaxed">At Haryana Institute of Information Technology, we redefine professional education through rigorous practical training and industry-aligned curricula. Our legacy of 32 years stands as a testament to our commitment to student success.</p>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="flex items-start gap-4">
+                    <div class="text-blue-700 text-2xl mt-1"><i class="fas fa-bullhorn"></i></div>
+                    <div><h4 class="font-bold text-slate-800">Digital Marketing</h4><p class="text-sm text-slate-500">Master growth strategies & SEO.</p></div>
+                </div>
+                <div class="flex items-start gap-4">
+                    <div class="text-blue-700 text-2xl mt-1"><i class="fas fa-code"></i></div>
+                    <div><h4 class="font-bold text-slate-800">Full Stack Web</h4><p class="text-sm text-slate-500">End-to-end modern development.</p></div>
+                </div>
+                <div class="flex items-start gap-4">
+                    <div class="text-blue-700 text-2xl mt-1"><i class="fas fa-microchip"></i></div>
+                    <div><h4 class="font-bold text-slate-800">AI & Machine Learning</h4><p class="text-sm text-slate-500">Building future-ready solutions.</p></div>
+                </div>
+                <div class="flex items-start gap-4">
+                    <div class="text-blue-700 text-2xl mt-1"><i class="fas fa-palette"></i></div>
+                    <div><h4 class="font-bold text-slate-800">UI/UX Design</h4><p class="text-sm text-slate-500">Human-centric digital experiences.</p></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-24 bg-[#f8fafc] px-6 overflow-hidden">
+    <div class="max-w-7xl mx-auto">
+        <div class="grid lg:grid-cols-2 gap-20 items-center">
+            
+            <div class="order-2 lg:order-1">
+                <h2 class="text-4xl font-black text-slate-900 mb-6 leading-tight">
+                    Earn a <span class="text-blue-700">Valuable Certificate</span> <br> Recognized Worldwide
+                </h2>
+                <p class="text-slate-600 text-lg mb-10">
+                    HIIT Ambala certificates are more than just paper. They represent hours of rigorous training, real-world projects, and industry validation.
+                </p>
+                
+                <div class="space-y-4">
+                    <div class="flex items-center gap-4 p-4 bg-white border-l-4 border-blue-700 shadow-sm rounded-r-xl hover:shadow-md transition-all">
+                        <div class="w-10 h-10 bg-blue-50 rounded-full flex items-center justify-center text-blue-700">
+                            <i class="fas fa-stamp"></i>
+                        </div>
+                        <span class="font-bold text-slate-800">ISO 9001:2015 Certified Institution</span>
+                    </div>
+                    
+                    <div class="flex items-center gap-4 p-4 bg-white border-l-4 border-orange-500 shadow-sm rounded-r-xl hover:shadow-md transition-all">
+                        <div class="w-10 h-10 bg-orange-50 rounded-full flex items-center justify-center text-orange-500">
+                            <i class="fas fa-globe"></i>
+                        </div>
+                        <span class="font-bold text-slate-800">Globally Valid Accreditation (IAO)</span>
+                    </div>
+
+                    <div class="flex items-center gap-4 p-4 bg-white border-l-4 border-emerald-500 shadow-sm rounded-r-xl hover:shadow-md transition-all">
+                        <div class="w-10 h-10 bg-emerald-50 rounded-full flex items-center justify-center text-emerald-500">
+                            <i class="fas fa-id-card"></i>
+                        </div>
+                        <span class="font-bold text-slate-800">Unique Verification ID for Employers</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="order-1 lg:order-2 relative group">
+                <div class="absolute -top-10 -right-10 w-64 h-64 bg-blue-100 rounded-full blur-3xl opacity-50"></div>
+                
+                <div class="relative z-10 bg-white p-4 shadow-[0_50px_100px_-20px_rgba(0,0,0,0.15)] rounded-lg transform lg:rotate-3 group-hover:rotate-0 transition-all duration-700 border border-slate-100">
+                    <div class="border-4 border-double border-slate-200 p-1">
+                        <img src="https://img.freepik.com/free-vector/elegant-certificate-template_23-2148400927.jpg?semt=ais_user_personalization&w=740&q=80" 
+                             class="w-full h-auto block" 
+                             alt="HIIT University Certificate">
+                    </div>
+                    
+                    <div class="absolute -bottom-6 -left-6 bg-slate-900 text-white p-5 rounded-2xl shadow-2xl animate-bounce-slow">
+                        <div class="flex items-center gap-3">
+                            <i class="fas fa-qrcode text-2xl text-blue-400"></i>
+                            <div class="text-xs">
+                                <p class="font-bold uppercase tracking-wider">Verified Graduate</p>
+                                <p class="text-slate-400">Scan to check authenticity</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+            
+
+<section class="py-16 bg-white px-6 border-t border-slate-100">
+    <div class="max-w-7xl mx-auto">
+        <h2 class="text-2xl font-black text-blue-900 mb-10 uppercase tracking-tight">Our Affiliations :</h2>
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+            <div class="border border-slate-200 p-4 rounded-md flex items-center justify-center hover:shadow-lg transition-shadow bg-white"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRm7BZ4CytT_XFNuZThWQhtySvggwN58nxusw&s" class="h-16 object-contain" alt="Skill India"></div>
+            <div class="border border-slate-200 p-4 rounded-md flex items-center justify-center hover:shadow-lg transition-shadow bg-white"><img src="https://www.sanskriti.edu.in/webimg/btech-in-collaboration.jpg" class="h-16 object-contain" alt="MSME"></div>
+            <div class="border border-slate-200 p-4 rounded-md flex items-center justify-center hover:shadow-lg transition-shadow bg-white"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSV9zrUdMIxVX1vs4De8mqx0GzLkzq1eGuYsg&s" class="h-16 object-contain" alt="NIELIT"></div>
+            <div class="border border-slate-200 p-4 rounded-md flex items-center justify-center hover:shadow-lg transition-shadow bg-white"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTD8K4ucwxsi_k5aRBD_qj3FVKfF6PxkYJxWg&s" class="h-16 object-contain" alt="IAO"></div>
+            <div class="border border-slate-200 p-4 rounded-md flex items-center justify-center hover:shadow-lg transition-shadow bg-white"><img src="https://img.freepik.com/premium-vector/iso-certified-company-emblem-design_1135235-2279.jpg?semt=ais_user_personalization&w=740&q=80" class="h-16 object-contain" alt="ISO"></div>
+            <div class="border border-slate-200 p-4 rounded-md flex items-center justify-center hover:shadow-lg transition-shadow bg-white"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbBpW05cvf5QnLSOBtTGXKdW9qN-uUTLfBZA&s" class="h-16 object-contain" alt="UGC"></div>
+        </div>
+    </div>
+</section>
+
+<section class="premium-leadership">
+    <div class="container">
+        <h2 class="main-title">Our Visionary <span>Leadership</span></h2>
+
+        <div class="leadership-box founder-box">
+            <div class="image-wrapper">
+                <div class="blob-bg"></div>
+                <img src="download.jpg" alt="Founder">
+                <div class="exp-tag">Founder</div>
+            </div>
+            <div class="content-glass">
+                <span class="rank-label">The Visionary</span>
+                <h3>Mr. Naresh Zandu</h3>
+                <p class="bio">"Over the years, efforts invested have enabled many lives to find both meaning and perspective in life. This boosts our everyday efforts to achieve optimization while delivering promising learning."</p>
+                <div class="social-pills">
+                    <a href="#">LinkedIn</a>
+                    <a href="#">Contact</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="leadership-box director-box reverse">
+            <div class="content-glass">
+                <span class="rank-label">Executive Director</span>
+                <h3>Mr. Aniket Zandu</h3>
+                <p class="bio">"As you commence your journey at HIIT, I encourage you to envision the path ahead as one filled with opportunities for growth, discovery, and transformation. Embrace each step with curiosity, courage, and a commitment to excellence. Remember, your education is not merely about acquiring knowledge, but also about honing your skills, nurturing your passions, and shaping your identity as future leaders."</p>
+                <div class="social-pills">
+                    <a href="#">LinkedIn</a>
+                    <a href="#">Portfolio</a>
+                </div>
+            </div>
+            <div class="image-wrapper">
+                <div class="blob-bg secondary"></div>
+                <img src="ankit.jpg" alt="Director">
+                <div class="exp-tag">Director</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="prime-recruiters">
+    <div class="bg-gradient-blur"></div>
+    <div class="container">
+        
+        <div class="header-content">
+            <span class="badge">Placement Partners</span>
+            <h2 class="title">Some Of Our <span class="text-gradient">Prime Recruiters</span></h2>
+            <div class="stats-bar">
+                <div class="stat-item"><b>500+</b> Happy Students</div>
+                <div class="stat-item"><b>150+</b> Global Partners</div>
+            </div>
+        </div>
+
+        <div class="diamond-wrapper">
+            <div class="diamond-row">
+                <div class="diamond-card"><div class="inner"><img src="https://www.nicepng.com/png/full/28-281671_mahindra-logo-hd-png-mahindra-logo.png" alt="Mahindra"></div></div>
+                <div class="diamond-card"><div class="inner"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Tata_logo.svg/1280px-Tata_logo.svg.png" alt="TATA"></div></div>
+                <div class="diamond-card"><div class="inner"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/1280px-Google_2015_logo.svg.png" alt="Google"></div></div>
+            </div>
+            <div class="diamond-row offset">
+                <div class="diamond-card"><div class="inner"><img src="https://upload.wikimedia.org/wikipedia/commons/8/8a/HCL_Technologies_logo.svg" alt="HCL"></div></div>
+                <div class="diamond-card pulse"><div class="inner"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Wipro_Primary_Logo_Color_RGB.svg/1280px-Wipro_Primary_Logo_Color_RGB.svg.png" alt="Wipro"></div></div>
+                <div class="diamond-card"><div class="inner"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Amazon_logo.svg/3840px-Amazon_logo.svg.png" alt="Amazon"></div></div>
+                <div class="diamond-card"><div class="inner"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Microsoft_logo_%282012%29.svg/3840px-Microsoft_logo_%282012%29.svg.png" alt="Microsoft"></div></div>
+            </div>
+            <div class="diamond-row">
+                <div class="diamond-card"><div class="inner"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Intel_logo_%282006-2020%29.svg/250px-Intel_logo_%282006-2020%29.svg.png" alt="Intel"></div></div>
+                <div class="diamond-card"><div class="inner"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Adobe_Corporate_logo.svg/960px-Adobe_Corporate_logo.svg.png" alt="Adobe"></div></div>
+                <div class="diamond-card"><div class="inner"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/IBM_logo.svg/1280px-IBM_logo.svg.png" alt="IBM"></div></div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+<section class="faq-section">
+    <div class="faq-container">
+        <div class="faq-header">
+            <span class="top-tag">Direct Help</span>
+            <h2>Frequently Asked <span>Questions</span></h2>
+            <p>Aapke mann mein uthne wale har sawal ka jawab yahan hai.</p>
+        </div>
+
+        <div class="accordion">
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <span>1. Can I get job-ready skills from the courses offered at HIIT Ambala?</span>
+                    <div class="icon">+</div>
+                </div>
+                <div class="accordion-body">
+                    <p><strong>Answer:</strong> Yes, definitely! HIIT Ambala ka curriculum industry experts ne design kiya hai. Hum sirf theory nahi padhate, balki students ko live projects aur latest tools par training dete hain taaki course khatam hote hi aap ek professional ki tarah kaam shuru kar sakein.</p>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <span>2. Are internships included in the courses at HIIT Ambala?</span>
+                    <div class="icon">+</div>
+                </div>
+                <div class="accordion-body">
+                    <p><strong>Answer:</strong> Haan, hamare zyada tar premium courses mein 3 se 6 mahine ki internship shamil hai. Is dauran aap asli companies ke projects par kaam karte hain, jisse aapko workplace ka experience milta hai aur aapka resume strong banta hai.</p>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <span>3. Are weekend classes available for working professionals?</span>
+                    <div class="icon">+</div>
+                </div>
+                <div class="accordion-body">
+                    <p><strong>Answer:</strong> Bilkul! Hum jaante hain ki job ke saath padhna mushkil hota hai, isliye hum Saturday aur Sunday ko special batches chalate hain. Ye batches working professionals ke liye design kiye gaye hain taaki unki job par asar na pade.</p>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <span>4. Does HIIT Ambala provide 100% job assistance?</span>
+                    <div class="icon">+</div>
+                </div>
+                <div class="accordion-body">
+                    <p><strong>Answer:</strong> Hum 100% placement support dete hain. Hamari dedicated team aapke Mock Interviews karwayegi, Resume banwayegi aur aapko hamare 150+ hiring partners (Mahindra, Wipro etc.) ke paas interviews ke liye bhejegi jab tak aapka selection nahi ho jata.</p>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <span>5. Are the courses at HIIT Ambala practical and hands-on?</span>
+                    <div class="icon">+</div>
+                </div>
+                <div class="accordion-body">
+                    <p><strong>Answer:</strong> Hamari training 80% practical hai. Hum "Learning by Doing" mein believe karte hain. Students ko hamari high-tech labs mein rozana practice karne ka mauka milta hai taaki software aur hardware par unka haath saaf ho sake.</p>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <span>6. What kind of companies hire students from HIIT Ambala?</span>
+                    <div class="icon">+</div>
+                </div>
+                <div class="accordion-body">
+                    <p><strong>Answer:</strong> Hamare students top MNCs aur tech companies mein placed hain. Isme IT firms, manufacturing companies aur design studios shamil hain. Aap upar hamare 'Prime Recruiters' section mein unke logos dekh sakte hain.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+   <script>
+document.addEventListener('DOMContentLoaded', () => {
+    const demoForm = document.querySelector('form');
+    const submitBtn = demoForm.querySelector('button');
+
+    demoForm.addEventListener('submit', async (e) => {
+        e.preventDefault(); // Page refresh hone se rokne ke liye
+
+        // 1. Data Collect Karna
+        const formData = {
+            name: demoForm.querySelectorAll('input')[0].value.trim(),
+            phone: demoForm.querySelectorAll('input')[1].value.trim(),
+            course: demoForm.querySelectorAll('select')[0].value,
+            type: demoForm.querySelectorAll('select')[1].value
+        };
+
+        // 2. Professional Validation
+        if (!formData.name || !formData.phone || formData.course === "Choose Course" || formData.type === "Choose Demo Type") {
+            Swal.fire({
+                icon: 'error',
+                title: 'Opps...',
+                text: 'Please fill all fields to reserve your seat!',
+                confirmButtonColor: '#2563eb'
+            });
+            return;
+        }
+
+        if (formData.phone.length < 10) {
+            Swal.fire({
+                icon: 'warning',
+                title: 'Invalid Number',
+                text: 'Please enter a valid 10-digit phone number.',
+                confirmButtonColor: '#2563eb'
+            });
+            return;
+        }
+
+        // 3. Button Loading Animation
+        const originalText = submitBtn.innerText;
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = `<i class="fas fa-spinner fa-spin"></i> Processing...`;
+        submitBtn.style.opacity = "0.7";
+
+        // 4. API Simulation (Real backend ki jagah 1.5s ka delay)
+        setTimeout(() => {
+            // Success Feedback
+            Swal.fire({
+                title: 'Seat Reserved!',
+                text: `Congratulations ${formData.name}! Our team will contact you for the ${formData.course} ${formData.type} demo.`,
+                icon: 'success',
+                showClass: { popup: 'animate__animated animate__fadeInDown' },
+                hideClass: { popup: 'animate__animated animate__fadeOutUp' },
+                confirmButtonColor: '#2563eb'
+            });
+
+            // Form Reset
+            demoForm.reset();
+            submitBtn.disabled = false;
+            submitBtn.innerText = originalText;
+            submitBtn.style.opacity = "1";
+            
+        }, 1500);
+    });
+
+    // 5. Input Field Animation (Focus Effect)
+    const inputs = demoForm.querySelectorAll('.modern-input, select');
+    inputs.forEach(input => {
+        input.addEventListener('focus', () => {
+            input.style.transform = "scale(1.02)";
+            input.style.transition = "0.3s ease";
+        });
+        input.addEventListener('blur', () => {
+            input.style.transform = "scale(1)";
+        });
+    });
+});
+</script>
+
+   <footer class="main-footer">
+    <div class="footer-container">
+        <div class="footer-box about-box">
+            <h2 class="footer-logo">HIIT-<span>Ambala</span></h2>
+            <p class="tagline">Enroll now for a successful global career!</p>
+            <div class="contact-details">
+                <p><strong>Location:</strong> Hartron Building, Near Aggarsain Chowk, Ambala City, Haryana</p>
+                <p><strong>Phone:</strong> +91-9996669962</p>
+                <p><strong>Email:</strong> info@hiitambala.com</p>
+            </div>
+            <div class="footer-socials">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+
+        <div class="footer-box">
+            <h3>Useful Links</h3>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About us</a></li>
+                <li><a href="#">Blogs</a></li>
+                <li><a href="#">Results</a></li>
+                <li><a href="#">Admissions</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-box">
+            <h3>Our Courses</h3>
+            <ul>
+                <li><a href="#">Full Stack Development</a></li>
+                <li><a href="#">Digital Marketing</a></li>
+                <li><a href="#">Data Structure</a></li>
+                <li><a href="#">Data Science</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-box acc-box">
+            <h3>Our Accreditations</h3>
+            <div class="iao-logo">
+                <img src="https://i.ibb.co/mR4L7vG/iao-logo.png" alt="IAO Accredited">
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <div class="bottom-flex">
+            <p>&copy; 2026 HIIT Ambala. All Rights Reserved.</p>
+            <p class="dev-credit">Designed & Developed by <span>[TARANJEET SINGH]</span></p>
+        </div>
+    </div>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const demoForm = document.querySelector('form');
+    const submitBtn = demoForm.querySelector('button');
+
+    // Pop-up function logic
+    const showPopup = (message, isSuccess = true) => {
+        // Ek naya div create karna pop-up ke liye
+        const popup = document.createElement('div');
+        
+        // Aapki CSS classes ke hisaab se styling (yahan 'show' aur 'success/error' use kiya hai)
+        popup.className = `toast-msg ${isSuccess ? 'success' : 'error'} show`;
+        
+        popup.innerHTML = `
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <span>${isSuccess ? '✅' : '❌'}</span>
+                <span>${message}</span>
+            </div>
+        `;
+
+        // Body mein add karna (Ya aapne jo container banaya ho usme)
+        document.body.appendChild(popup);
+
+        // 3 second baad pop-up ko remove karna
+        setTimeout(() => {
+            popup.classList.remove('show');
+            setTimeout(() => popup.remove(), 500);
+        }, 3000);
+    };
+
+    demoForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        // Form values nikalna
+        const name = demoForm.querySelectorAll('input')[0].value.trim();
+        const phone = demoForm.querySelectorAll('input')[1].value.trim();
+
+        // Validation
+        if (!name || !phone) {
+            showPopup("Please enter all details!", false);
+            return;
+        }
+
+        // Professional Button State (Loading)
+        const originalText = submitBtn.innerText;
+        submitBtn.innerText = "Processing...";
+        submitBtn.disabled = true;
+
+        // Fake API call (1.2 seconds ka delay professional feel ke liye)
+        setTimeout(() => {
+            // Success Pop-up dikhana
+            showPopup(`Thank you ${name}! Your seat is reserved.`);
+
+            // Form reset aur button normal karna
+            demoForm.reset();
+            submitBtn.innerText = originalText;
+            submitBtn.disabled = false;
+        }, 1200);
+    });
+});
+
+    
+const demoForm = document.querySelector('form');
+const toastContainer = document.getElementById('toast-container');
+
+// Function to show professional message
+function showMessage(text, type = 'success') {
+    const toast = document.createElement('div');
+    toast.className = `toast-msg ${type}`;
+    toast.innerHTML = `
+        <span style="font-size: 18px;">${type === 'success' ? '✅' : '❌'}</span>
+        <span>${text}</span>
+    `;
+    
+    toastContainer.appendChild(toast);
+    
+    // Animation trigger
+    setTimeout(() => toast.classList.add('show'), 100);
+    
+    // Auto remove after 4 seconds
+    setTimeout(() => {
+        toast.classList.remove('show');
+        setTimeout(() => toast.remove(), 500);
+    }, 4000);
+}
+
+// Form Submission Logic
+demoForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    // Data get karna
+    const name = demoForm.querySelectorAll('input')[0].value;
+    const phone = demoForm.querySelectorAll('input')[1].value;
+    const course = demoForm.querySelectorAll('select')[0].value;
+
+    // Validation check
+    if (!name || !phone || course === "Choose Course") {
+        showMessage("Please fill all details correctly.", "error");
+        return;
+    }
+
+    // Professional Simulation
+    const btn = demoForm.querySelector('button');
+    btn.innerText = "Processing...";
+    btn.style.opacity = "0.6";
+    btn.disabled = true;
+
+    setTimeout(() => {
+        // Success Message
+        showMessage(`Thank you ${name}! Your demo seat is reserved.`);
+        
+        // Reset form & button
+        demoForm.reset();
+        btn.innerText = "Reserve My Seat";
+        btn.style.opacity = "1";
+        btn.disabled = false;
+    }, 1500);
+});
+
+
+
+const menuBtn = document.getElementById("menu-btn");
+const navLinks = document.getElementById("nav-links");
+
+menuBtn.addEventListener("click", function(){
+
+navLinks.classList.toggle("active");
+
+});
+</script>
+
+</body>
+</html>

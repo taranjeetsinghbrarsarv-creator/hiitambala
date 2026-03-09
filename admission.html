@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HIIT | Student Registration Portal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary: #2563eb;
+            --accent: #00f2fe;
+            --hiit-red: #ff3e3e;
+            /* New Professional BG Gradient */
+            --bg-color: #030712; 
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg-color);
+            color: white;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* High-Level Mesh Background Animation */
+        .bg-mesh {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: 
+                radial-gradient(at 0% 0%, rgba(37, 99, 235, 0.2) 0, transparent 50%), 
+                radial-gradient(at 100% 0%, rgba(0, 242, 254, 0.15) 0, transparent 50%),
+                radial-gradient(at 50% 100%, rgba(255, 62, 62, 0.1) 0, transparent 50%);
+            z-index: -1;
+        }
+
+        .glass-container {
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 2.5rem;
+            box-shadow: 0 40px 100px -20px rgba(0, 0, 0, 0.7);
+        }
+
+        .input-field {
+            background: rgba(2, 6, 23, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: white;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .input-field:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 20px rgba(0, 242, 254, 0.15);
+            background: rgba(2, 6, 23, 0.8);
+            outline: none;
+        }
+
+        .file-upload-card {
+            border: 2px dashed rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.02);
+            transition: all 0.3s ease;
+        }
+
+        .file-upload-card:hover {
+            border-color: var(--accent);
+            background: rgba(0, 242, 254, 0.05);
+            transform: translateY(-5px);
+        }
+
+        .btn-submit {
+            background: linear-gradient(135deg, #1e40af 0%, #2563eb 50%, #00f2fe 100%);
+            background-size: 200% auto;
+            transition: 0.5s;
+            font-weight: 800;
+        }
+
+        .btn-submit:hover {
+            background-position: right center;
+            box-shadow: 0 0 40px rgba(37, 99, 235, 0.4);
+            transform: translateY(-2px);
+        }
+
+        /* Success Popup Styles */
+        #successPopup {
+            display: none;
+            position: fixed;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 20000;
+            background: #0f172a;
+            border: 2px solid var(--accent);
+            box-shadow: 0 0 50px rgba(0, 242, 254, 0.3);
+        }
+
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.8);
+            backdrop-filter: blur(8px);
+            z-index: 19999;
+        }
+
+        .logo-badge {
+            background: var(--hiit-red);
+            padding: 10px 20px;
+            clip-path: polygon(15% 0%, 100% 0%, 85% 100%, 0% 100%);
+            font-weight: 900;
+            box-shadow: 4px 4px 0px var(--accent);
+        }
+    </style>
+</head>
+<body class="py-12 px-4">
+
+    <div class="bg-mesh"></div>
+
+    <div class="overlay" id="overlay"></div>
+    <div id="successPopup" class="p-10 rounded-[2.5rem] text-center max-w-sm w-full animate__animated animate__zoomIn">
+        <div class="w-20 h-20 bg-green-500/20 text-green-400 rounded-full flex items-center justify-center text-4xl mx-auto mb-6">
+            <i class="fas fa-check-circle"></i>
+        </div>
+        <h2 class="text-3xl font-black mb-2">Success!</h2>
+        <p class="text-slate-400 mb-8 font-medium">Your registration at HIIT Ambala has been submitted successfully.</p>
+        <button onclick="closePopup()" class="w-full py-4 bg-white text-black font-black rounded-2xl hover:bg-cyan-400 transition-all">Back to Home</button>
+    </div>
+
+    <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-12">
+            <div class="inline-block mb-6">
+                <div class="logo-badge text-3xl italic">HIIT</div>
+            </div>
+            <h1 class="text-5xl font-black text-white mb-3 tracking-tight">Student Portal</h1>
+            <p class="text-cyan-400 font-medium tracking-widest uppercase text-xs">Haryana Institute of Information Technology</p>
+        </div>
+
+        <form id="registrationForm" onsubmit="handleFormSubmit(event)" class="glass-container p-8 md:p-14 space-y-10">
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="space-y-3">
+                    <label class="text-xs uppercase tracking-widest font-bold text-slate-400">Student Name</label>
+                    <input type="text" required placeholder="Enter full name" class="input-field w-full p-4 rounded-2xl">
+                </div>
+                <div class="space-y-3">
+                    <label class="text-xs uppercase tracking-widest font-bold text-slate-400">Father's Name</label>
+                    <input type="text" required placeholder="Enter father's name" class="input-field w-full p-4 rounded-2xl">
+                </div>
+                <div class="space-y-3">
+                    <label class="text-xs uppercase tracking-widest font-bold text-slate-400">Roll Number</label>
+                    <input type="text" required placeholder="HIIT-XXXX" class="input-field w-full p-4 rounded-2xl">
+                </div>
+                <div class="space-y-3">
+                    <label class="text-xs uppercase tracking-widest font-bold text-slate-400">Phone Number</label>
+                    <input type="tel" required placeholder="+91" class="input-field w-full p-4 rounded-2xl">
+                </div>
+                <div class="space-y-3 md:col-span-2">
+                    <label class="text-xs uppercase tracking-widest font-bold text-slate-400">Email Address</label>
+                    <input type="email" required placeholder="example@mail.com" class="input-field w-full p-4 rounded-2xl">
+                </div>
+            </div>
+
+            <div class="h-px bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
+
+            <div>
+                <h3 class="text-xl font-black mb-8 flex items-center gap-3">
+                    <span class="w-8 h-8 bg-cyan-500/10 text-cyan-400 rounded-lg flex items-center justify-center text-sm"><i class="fas fa-folder-open"></i></span>
+                    Documentation <span class="text-[10px] text-slate-500 font-normal ml-2">(.JPG / .PNG under 300KB)</span>
+                </h3>
+                
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="file-upload-card p-6 rounded-3xl text-center">
+                        <i class="fas fa-camera text-2xl mb-3 text-slate-500"></i>
+                        <p class="text-xs font-bold text-slate-300">Student Photo</p>
+                        <input type="file" required class="text-[10px] text-slate-500 mt-4 cursor-pointer file:hidden" accept="image/*">
+                    </div>
+
+                    <div class="file-upload-card p-6 rounded-3xl text-center">
+                        <i class="fas fa-scroll text-2xl mb-3 text-slate-500"></i>
+                        <p class="text-xs font-bold text-slate-300">10th Marksheet</p>
+                        <input type="file" required class="text-[10px] text-slate-500 mt-4 cursor-pointer file:hidden" accept="image/*">
+                    </div>
+
+                    <div class="file-upload-card p-6 rounded-3xl text-center">
+                        <i class="fas fa-graduation-cap text-2xl mb-3 text-slate-500"></i>
+                        <p class="text-xs font-bold text-slate-300">12th Marksheet</p>
+                        <input type="file" required class="text-[10px] text-slate-500 mt-4 cursor-pointer file:hidden" accept="image/*">
+                    </div>
+
+                    <div class="file-upload-card p-6 rounded-3xl text-center">
+                        <i class="fas fa-fingerprint text-2xl mb-3 text-slate-500"></i>
+                        <p class="text-xs font-bold text-slate-300">Aadhar Card</p>
+                        <input type="file" required class="text-[10px] text-slate-500 mt-4 cursor-pointer file:hidden" accept="image/*">
+                    </div>
+                </div>
+            </div>
+
+            <div class="pt-8">
+                <button type="submit" class="btn-submit w-full py-6 rounded-3xl text-white text-xl uppercase tracking-widest shadow-2xl">
+                    Submit Application <i class="fas fa-arrow-right ml-3 text-sm"></i>
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        // File Size Check
+        document.querySelectorAll('input[type="file"]').forEach(input => {
+            input.addEventListener('change', function() {
+                if(this.files[0] && this.files[0].size > 307200) {
+                    alert("Warning: " + this.files[0].name + " is larger than 300KB. Please compress it.");
+                    this.value = "";
+                }
+            });
+        });
+
+        // Form Submit Logic
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            
+            // Show Popup and Overlay
+            document.getElementById('overlay').style.display = 'block';
+            document.getElementById('successPopup').style.display = 'block';
+            
+            // Reset Form
+            document.getElementById('registrationForm').reset();
+        }
+
+        function closePopup() {
+            document.getElementById('overlay').style.display = 'none';
+            document.getElementById('successPopup').style.display = 'none';
+            // You can redirect to home page here: window.location.href = "index.html";
+        }
+    </script>
+
+</body>
+</html>

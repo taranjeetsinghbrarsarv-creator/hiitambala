@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cosmetology | HIIT Ambala - Elite Training</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --navy: #0a192f;
+            --blue: #1e3a8a;
+            --pink: #db2777;
+            --light-blue: #3b82f6;
+            --white: #ffffff;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: #f4f7fe; color: #333; }
+
+        /* --- 1. TOP NAV (Matching Index) --- */
+        nav { background: var(--blue); padding: 12px 5%; display: flex; justify-content: space-between; align-items: center; color: white; position: sticky; top: 0; z-index: 1000; }
+        .logo { font-weight: 900; font-size: 1.5rem; letter-spacing: 1px; }
+        .nav-links { display: flex; list-style: none; gap: 20px; }
+        .nav-links a { color: white; text-decoration: none; font-size: 0.9rem; font-weight: 500; opacity: 0.9; }
+        .btn-student { background: red; color: white; padding: 8px 15px; border-radius: 5px; font-weight: bold; text-decoration: none; }
+
+        /* --- 2. HERO & FORM SECTION --- */
+        .hero-section {
+            background: linear-gradient(rgba(10, 25, 47, 0.85), rgba(10, 25, 47, 0.85)), url('https://hiitambala.com/hiit-admin/uploads/G-1_50.webp');
+            background-size: cover; background-position: center;
+            padding: 80px 8%; display: flex; gap: 40px; align-items: center; color: white;
+        }
+        .hero-text { flex: 1.2; }
+        .hero-text h1 { font-size: 3rem; margin-bottom: 20px; line-height: 1.2; }
+        .hero-text ul { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 30px; }
+        .hero-text li { font-size: 1rem; display: flex; align-items: center; gap: 10px; }
+        .hero-text i { color: var(--light-blue); }
+
+        /* --- BOOK DEMO FORM --- */
+        .form-container { flex: 0.8; background: white; padding: 30px; border-radius: 10px; color: #333; box-shadow: 0 15px 30px rgba(0,0,0,0.2); }
+        .form-container h2 { text-align: center; margin-bottom: 20px; font-size: 1.5rem; }
+        .form-group { margin-bottom: 15px; }
+        .form-group label { display: block; margin-bottom: 5px; font-weight: 600; font-size: 0.9rem; }
+        .form-group input, .form-group select { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 5px; outline: none; }
+        .btn-submit { width: 100%; background: #059669; color: white; padding: 12px; border: none; border-radius: 5px; font-weight: bold; cursor: pointer; }
+
+        /* --- 3. COUNTER SECTION (Blue Background) --- */
+        .counter-section {
+            background: white; padding: 40px 5%; display: flex; justify-content: space-around;
+            text-align: center; border-bottom: 4px solid var(--blue);
+        }
+        .counter-box h2 { font-size: 2.2rem; color: var(--blue); }
+        .counter-box p { font-weight: bold; color: #666; font-size: 0.9rem; }
+
+        /* --- 4. WELCOME & 10 YEARS BADGE --- */
+        .welcome-area { padding: 80px 8%; display: flex; gap: 50px; align-items: center; background: white; }
+        .welcome-img-wrap { position: relative; flex: 1; }
+        .welcome-img-wrap img { width: 100%; border-radius: 15px; }
+        .badge-10 {
+            position: absolute; bottom: -20px; right: -20px;
+            background: #FFD700; color: #000; width: 130px; height: 130px;
+            border-radius: 50%; border: 6px solid white; display: flex;
+            flex-direction: column; align-items: center; justify-content: center;
+            font-weight: 900; text-align: center; box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        /* --- 5. INFINITE LAB TRAIN (Horizontal Slider) --- */
+        .labs-slider { background: #f1f5f9; padding: 80px 0; overflow: hidden; position: relative; }
+        .labs-slider h2 { text-align: center; margin-bottom: 40px; font-size: 2.5rem; color: var(--navy); }
+        .train-track { display: flex; width: calc(400px * 8); animation: trainMove 30s linear infinite; }
+        .lab-item { width: 400px; padding: 0 15px; flex-shrink: 0; }
+        .lab-item img { width: 100%; height: 250px; object-fit: cover; border-radius: 10px; border-bottom: 5px solid var(--blue); }
+        .lab-item p { text-align: center; margin-top: 10px; font-weight: bold; color: var(--blue); }
+
+        @keyframes trainMove {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(calc(-400px * 4)); }
+        }
+
+        /* --- 6. COURSE GRID --- */
+        .courses-section { padding: 80px 8%; text-align: center; }
+        .course-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-top: 40px; }
+        .course-card { background: white; padding: 30px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); transition: 0.3s; border-top: 5px solid var(--pink); }
+        .course-card:hover { transform: translateY(-10px); }
+        .course-card i { font-size: 2.5rem; color: var(--pink); margin-bottom: 15px; }
+
+        @media (max-width: 768px) {
+            .hero-section, .welcome-area { flex-direction: column; }
+            .hero-text h1 { font-size: 2rem; }
+        }
+
+        /* --- Global Fix --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --gold: #d4af37;
+    --dark: #1a1a1a;
+    --white: #ffffff;
+}
+
+/* NAVBAR MAIN BOX */
+.cosmo-navbar {
+    display: flex;
+    width: 100%;
+    height: 90px;
+    background-color: var(--white) !important; /* Force white background */
+    position: fixed; /* Screen par chipka rahega */
+    top: 0;
+    left: 0;
+    z-index: 99999; /* Isse upar kuch nahi aayega */
+    border-bottom: 2px solid rgba(212, 175, 55, 0.3); /* Goldish border */
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1); /* Taki alag se dikhe */
+}
+
+.nav-container {
+    width: 95%;
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* --- LOGO --- */
+.nav-left { flex: 1; }
+.logo-wrapper { display: flex; align-items: center; text-decoration: none; gap: 10px; }
+.main-logo { height: 60px; width: auto; display: block; }
+.logo-text { border-left: 2px solid var(--gold); padding-left: 10px; }
+.brand-name { font-size: 1.6rem; font-weight: 900; color: var(--dark); display: block; line-height: 1; }
+.industry { font-size: 10px; font-weight: 700; color: var(--gold); letter-spacing: 2px; }
+
+/* --- LINKS (CENTER) --- */
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+    flex: 2;
+    justify-content: center;
+}
+
+.nav-item {
+    text-decoration: none;
+    color: var(--dark) !important; /* Dark color links */
+    font-weight: 700;
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    position: relative;
+    padding-bottom: 5px;
+}
+
+.nav-item:hover { color: var(--gold) !important; }
+
+/* Hover Animation Underline */
+.nav-item::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--gold);
+    transition: 0.3s ease;
+}
+
+.nav-item:hover::after { width: 100%; }
+
+/* --- BUTTON (RIGHT) --- */
+.nav-right { flex: 1; display: flex; justify-content: flex-end; }
+.student-portal-btn {
+    background-color: var(--dark);
+    color: var(--white);
+    padding: 12px 25px;
+    text-decoration: none;
+    font-weight: 700;
+    border-radius: 4px;
+    border: 2px solid var(--dark);
+    transition: 0.3s;
+}
+
+.student-portal-btn:hover {
+    background: transparent;
+    color: var(--dark);
+    border-color: var(--gold);
+}
+
+/* MOBILE FIX: Agar screen chhoti hai toh links hide honge, bar rahegi */
+@media (max-width: 992px) {
+    .nav-links { display: none; }
+}
+
+
+/* --- DARK HERO SECTION FIX --- */
+#main-hero {
+    background: url('your-background-image.jpg') center/cover no-repeat;
+    background-color: #050a18; /* Dark Navy Background */
+    min-height: 100vh;
+    width: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.hero-overlay {
+    background: rgba(5, 10, 24, 0.85); /* Overlay like your screenshot */
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: 100px 5%;
+}
+
+.hero-container {
+    max-width: 1300px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 2 equal parts like image */
+    gap: 50px;
+    width: 100%;
+}
+
+/* Left Content */
+.main-heading {
+    font-size: 5rem; /* Extra Large font as per image */
+    font-weight: 900;
+    color: #ffffff;
+    line-height: 0.9;
+    margin-bottom: 30px;
+}
+
+.gradient-blue {
+    background: linear-gradient(to right, #60a5fa, #a78bfa);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.description-text {
+    color: #94a3b8;
+    font-size: 1.2rem;
+    max-width: 500px;
+    margin-bottom: 40px;
+}
+
+/* Badge Styling */
+.trust-badge-mini {
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 15px 25px;
+    border-radius: 20px;
+    width: fit-content;
+    gap: 15px;
+}
+
+.avatar-stack img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid #050a18;
+    margin-left: -15px;
+}
+.avatar-stack img:first-child { margin-left: 0; }
+
+.badge-text strong { color: #fff; display: block; font-size: 1rem; }
+.badge-text span { color: #3b82f6; font-size: 0.85rem; }
+
+/* --- RIGHT SIDE: FORM CARD --- */
+.hero-right-form {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.demo-card {
+    background: #ffffff; /* Pure white card as per image */
+    padding: 50px;
+    border-radius: 40px; /* Highly rounded corners */
+    width: 100%;
+    max-width: 500px;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+}
+
+.demo-card h2 {
+    color: #1e293b;
+    font-size: 2.2rem;
+    font-weight: 800;
+}
+
+.tagline {
+    color: #64748b;
+    font-style: italic;
+    margin-bottom: 40px;
+}
+
+.input-field {
+    margin-bottom: 25px;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.input-field input, .input-field select {
+    width: 100%;
+    border: none;
+    padding: 15px 0;
+    font-size: 1.1rem;
+    color: #1e293b;
+    outline: none;
+    background: transparent;
+}
+
+.btn-reserve {
+    width: 100%;
+    background: linear-gradient(to right, #2563eb, #3b82f6);
+    color: white;
+    padding: 20px;
+    border-radius: 15px;
+    border: none;
+    font-weight: 800;
+    font-size: 1.1rem;
+    cursor: pointer;
+    margin-top: 20px;
+    box-shadow: 0 10px 20px rgba(37, 99, 235, 0.3);
+}
+
+/* Responsive Fix */
+@media (max-width: 992px) {
+    .hero-container { grid-template-columns: 1fr; }
+    .main-heading { font-size: 3rem; }
+}
+    </style>
+</head>
+<body>
+
+   <nav class="cosmo-navbar">
+    <div class="nav-container">
+        <div class="nav-left">
+            <a href="index.html" class="logo-wrapper">
+                <img src="logo.jpg" alt="HIIT Logo" class="main-logo">
+                <div class="logo-text">
+                    <span class="brand-name">HIIT</span>
+                    <span class="industry">COSMETOLOGY</span>
+                </div>
+            </a>
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="index.html" class="nav-item">Home</a></li>
+            <li><a href="about.html" class="nav-item">About</a></li>
+            <li><a href="coures.html" class="nav-item">Courses</a></li>
+            <li><a href="contact.html" class="nav-item">Contact</a></li>
+        </ul>
+
+        <div class="nav-right">
+            <a href="#" class="student-portal-btn">
+                <i class="fas fa-user-grad"></i> Student Section
+            </a>
+        </div>
+    </div>
+</nav>
+<section id="main-hero" class="hero-section-dark">
+    <div class="hero-overlay">
+        <div class="hero-container">
+            <div class="hero-left-box">
+                <h1 class="main-heading">HIIT Cosmetology<span class="gradient-blue"> Institute</span></h1>
+                <p class="description-text">
+                   Boost your skills at HIIT Cosmetology Institute, Ambala. Gain career-focused training through expert-led programs in Nail Art, Skincare, Makeup, Hair Styling, Hydrafacial and more. Join us today.
+                </p>
+                <div class="trust-badge-mini">
+                    <div class="avatar-stack">
+                        <img src="https://i.pravatar.cc/50?img=1" alt="student">
+                        <img src="https://i.pravatar.cc/50?img=2" alt="student">
+                        <img src="https://i.pravatar.cc/50?img=3" alt="student">
+                    </div>
+                    <div class="badge-text">
+                        <strong>1500+ Students Placed</strong>
+                        <span>From Ambala City</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero-right-form">
+                <div class="demo-card">
+                    <h2>Book a Demo Class</h2>
+                    <p class="tagline">"Experience high-intensity learning for free!"</p>
+                    
+                    <form class="booking-form">
+                        <div class="input-field">
+                            <input type="text" placeholder="Your Name" required>
+                        </div>
+                        <div class="input-field">
+                            <input type="tel" placeholder="Phone Number" required>
+                        </div>
+                        <div class="input-field">
+                            <select required>
+                                <option value="" disabled selected>Choose Course</option>
+                                <option>Professional Makeup</option>
+                                <option>Advance Skin</option>
+                                <option>Nail Art</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn-reserve">RESERVE MY SEAT</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <section class="counter-section">
+        <div class="counter-box">
+            <h2>20,000+</h2>
+            <p>HAPPY STUDENTS</p>
+        </div>
+        <div class="counter-box">
+            <h2>5000+</h2>
+            <p>PLACEMENTS</p>
+        </div>
+        <div class="counter-box">
+            <h2>10+</h2>
+            <p>YEARS OF SERVICE</p>
+        </div>
+        <div class="counter-box">
+            <h2>500+</h2>
+            <p>WORKSHOPS</p>
+        </div>
+    </section>
+
+    <section class="welcome-area">
+        <div class="welcome-img-wrap">
+            <img src="https://hiitambala.com/assets/img/cosmetology.webp" alt="Training">
+            <div class="badge-10">
+                <span>CELEBRATING</span>
+                <span style="font-size: 2rem;">10</span>
+                <span>YEARS</span>
+            </div>
+        </div>
+        <div style="flex: 1.2;">
+            <h2 style="font-size: 2.5rem; color: var(--blue); margin-bottom: 20px;">Shaping Your Beauty Career</h2>
+            <p style="line-height: 1.8; color: #555;">HIIT Cosmetology Institute, the best cosmetology institute in Ambala, focuses on practical skills and career advancement. Step into a world of creativity, innovation, and personal growth.</p>
+            <br>
+            <button style="background: var(--blue); color: white; border: none; padding: 12px 25px; border-radius: 5px; cursor: pointer;">Learn More</button>
+        </div>
+    </section>
+
+    <section class="labs-slider">
+        <h2>HIIT Cosmetology Labs</h2>
+        <div class="train-track">
+            <div class="lab-item">
+                <img src="https://hiitambala.com/assets/img/lab3.jpg">
+                <p>MAKEUP LAB</p>
+            </div>
+            <div class="lab-item">
+                <img src="https://hiitambala.com/assets/img/lab.jpg">
+                <p>HAIR LAB</p>
+            </div>
+            <div class="lab-item">
+                <img src="https://hiitambala.com/assets/img/lab4.jpg">
+                <p>NAIL LAB</p>
+            </div>
+            <div class="lab-item">
+                <img src="https://hiitambala.com/assets/img/lab2.jpg">
+                <p>SKIN LAB</p>
+            </div>
+            <div class="lab-item"><img src="https://hiitambala.com/assets/img/lab3.jpg"><p>MAKEUP LAB</p></div>
+            <div class="lab-item"><img src="https://hiitambala.com/assets/img/lab.jpg"><p>HAIR LAB</p></div>
+        </div>
+    </section>
+
+    <section class="courses-section">
+        <h2 style="font-size: 2.5rem; color: var(--navy);">Our Courses</h2>
+        <div class="course-grid">
+            <div class="course-card">
+                <i class="fas fa-scissors"></i>
+                <h3>Hair Courses</h3>
+                <p>Learn the latest strategies in hair styling and chemical treatments.</p>
+            </div>
+            <div class="course-card">
+                <i class="fas fa-magic"></i>
+                <h3>Makeup Courses</h3>
+                <p>Master professional makeup skills for every occasion.</p>
+            </div>
+            <div class="course-card">
+                <i class="fas fa-hand-sparkles"></i>
+                <h3>Nail Art</h3>
+                <p>Hands-on training in nail extensions and creative designs.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer style="background: var(--navy); color: white; padding: 50px; text-align: center;">
+        <p>&copy; 2026 HIIT Ambala. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>

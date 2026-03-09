@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Team | HIIT Ambala</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+        body { font-family: 'Poppins', sans-serif; background-color: #f4f7fa; }
+
+        .team-card {
+            background: white;
+            border-radius: 4px; /* Image jaisa sharp-rounded corner */
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            border: 1px solid #e5e7eb;
+            height: 100%;
+        }
+
+        .team-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.1);
+        }
+
+        .exp-badge {
+            background-color: #fff1f1;
+            color: #d93025;
+            font-size: 11px;
+            font-weight: 700;
+            padding: 2px 10px;
+            border-radius: 4px;
+            border: 1px solid #ffdada;
+            display: inline-block;
+            margin-bottom: 12px;
+        }
+
+        .role-title {
+            color: #cc0000; /* Dark Red as per image */
+            font-size: 1.1rem;
+            line-height: 1.3;
+            font-weight: 700;
+        }
+
+        .desc-text {
+            font-size: 13px;
+            color: #555;
+            line-height: 1.6;
+            text-align: center;
+            padding: 0 10px;
+        }
+
+        body{
+    background:#f4f4f4;
+}
+
+/* Navbar */
+nav{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px 50px;
+    background:#111;
+    position:sticky;
+    top:0;
+    z-index:1000;
+}
+
+/* Logo */
+.logo{
+    color:#fff;
+    font-size:24px;
+    font-weight:bold;
+    letter-spacing:2px;
+    cursor:pointer;
+    transition:0.4s;
+}
+
+.logo:hover{
+    color:#00ffcc;
+    transform:scale(1.1);
+}
+
+/* Nav Links */
+.nav-links{
+    display:flex;
+    list-style:none;
+}
+
+.nav-links li{
+    margin:0 20px;
+    position:relative;
+}
+
+.nav-links a{
+    text-decoration:none;
+    color:white;
+    font-size:18px;
+    transition:0.3s;
+}
+
+/* Hover Underline Animation */
+.nav-links li::after{
+    content:"";
+    position:absolute;
+    width:0%;
+    height:3px;
+    background:#00ffcc;
+    left:0;
+    bottom:-8px;
+    transition:0.4s ease;
+}
+
+.nav-links li:hover::after{
+    width:100%;
+}
+
+.nav-links a:hover{
+    color:#00ffcc;
+}
+
+/* Hamburger */
+.hamburger{
+    display:none;
+    flex-direction:column;
+    cursor:pointer;
+}
+
+.hamburger span{
+    height:3px;
+    width:25px;
+    background:white;
+    margin:4px;
+    transition:0.4s;
+}
+
+/* Logo Image */
+.logo img{
+    height:45px;
+    cursor:pointer;
+    transition:0.4s;
+}
+
+.logo img:hover{
+    transform:scale(1.1) rotate(5deg);
+}
+
+/* Mobile */
+@media(max-width:768px){
+    .nav-links{
+        position:absolute;
+        right:0;
+        top:70px;
+        background:#111;
+        height:100vh;
+        width:200px;
+        flex-direction:column;
+        align-items:center;
+        justify-content:center;
+        transform:translateX(100%);
+        transition:0.5s ease-in-out;
+    }
+
+    .nav-links li{
+        margin:20px 0;
+    }
+
+    .nav-active{
+        transform:translateX(0%);
+    }
+
+    .hamburger{
+        display:flex;
+    }
+
+    .toggle span:nth-child(1){
+        transform:rotate(-45deg) translate(-5px,6px);
+    }
+    .toggle span:nth-child(2){
+        opacity:0;
+    }
+    .toggle span:nth-child(3){
+        transform:rotate(45deg) translate(-5px,-6px);
+    }
+}
+    </style>
+</head>
+   <nav>
+    <!-- Image Logo -->
+    <div class="logo">
+        <img src="logo.jpg" alt="Logo">
+        <!-- Yaha apna image path lagao -->
+    </div>
+
+
+    <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="#">Services</a></li>
+        <li><a href="contact.html">Contact</a></li>
+    </ul>
+
+    <div class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+</nav>
+
+
+<body class="py-12">
+
+    <div class="max-w-7xl mx-auto px-6 mb-16 text-center">
+        <h1 class="text-3xl font-bold text-slate-800 uppercase tracking-tight">Our Faculty</h1>
+        <div class="w-16 h-1 bg-red-600 mx-auto mt-2"></div>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        
+        <div class="team-card flex flex-col items-center pb-8">
+            <div class="w-full h-80 bg-gray-200 mb-6">
+                <img src="ponam.jpg" alt="Prof 1" class="w-full h-full object-cover">
+            </div>
+            <div class="px-4 text-center">
+                <span class="exp-badge">8+ Years Experience</span>
+                <h3 class="role-title mb-2">Digital Marketing & IT Trainer</h3>
+                <p class="font-bold text-gray-800 mb-4">Anjali Sharma</p>
+                <p class="desc-text">"Turning ideas into real-world applications through code. Focused on practical learning, live projects, and industry-ready skills."</p>
+            </div>
+        </div>
+
+        <div class="team-card flex flex-col items-center pb-8">
+            <div class="w-full h-80 bg-gray-200 mb-6">
+                <img src="hr.jpg" alt="Prof 2" class="w-full h-full object-cover">
+            </div>
+            <div class="px-4 text-center">
+                <span class="exp-badge">8+ Years Experience</span>
+                <h3 class="role-title mb-2">HR Executive</h3>
+                <p class="font-bold text-gray-800 mb-4">Sunita Reddy</p>
+                <p class="desc-text">"Building strong career foundations through guidance and professional development. Focused on workplace ethics and communication."</p>
+            </div>
+        </div>
+
+        <div class="team-card flex flex-col items-center pb-8">
+            <div class="w-full h-80 bg-gray-200 mb-6">
+                <img src="senior.jpg" alt="Prof 3" class="w-full h-full object-cover">
+            </div>
+            <div class="px-4 text-center">
+                <span class="exp-badge">7+ Years Experience</span>
+                <h3 class="role-title mb-2">Senior Accountant</h3>
+                <p class="font-bold text-gray-800 mb-4">Vikram Singh</p>
+                <p class="desc-text">"Where accuracy meets expertise in the world of finance. Training students in real-life accounting scenarios and compliance."</p>
+            </div>
+        </div>
+
+        <div class="team-card flex flex-col items-center pb-8">
+            <div class="w-full h-80 bg-gray-200 mb-6">
+                <img src="it.jpg" alt="Prof 4" class="w-full h-full object-cover">
+            </div>
+            <div class="px-4 text-center">
+                <span class="exp-badge">2+ Years Experience</span>
+                <h3 class="role-title mb-2">IT Trainer</h3>
+                <p class="font-bold text-gray-800 mb-4">Mehak Preet</p>
+                <p class="desc-text">"Where logic meets creativity through clean code. Dedicated to transforming beginners into confident software professionals."</p>
+            </div>
+        </div>
+
+        <div class="team-card flex flex-col items-center pb-8">
+            <div class="w-full h-80 bg-gray-200 mb-6">
+                <img src="counsler.jpg" alt="Prof 5" class="w-full h-full object-cover">
+            </div>
+            <div class="px-4 text-center">
+                <span class="exp-badge">5+ Years Experience</span>
+                <h3 class="role-title mb-2">Graphic Design Mentor</h3>
+                <p class="font-bold text-gray-800 mb-4">Rohit Verma</p>
+                <p class="desc-text">"Mastering visual storytelling through design tools. Teaching the art of branding, typography, and creative thinking."</p>
+            </div>
+        </div>
+
+        <div class="team-card flex flex-col items-center pb-8">
+            <div class="w-full h-80 bg-gray-200 mb-6">
+                <img src="countant.jpg" alt="Prof 6" class="w-full h-full object-cover">
+            </div>
+            <div class="px-4 text-center">
+                <span class="exp-badge">10+ Years Experience</span>
+                <h3 class="role-title mb-2">Java Specialist</h3>
+                <p class="font-bold text-gray-800 mb-4">Suresh Raina</p>
+                <p class="desc-text">"Expertise in backend systems and enterprise-level Java applications. Focus on scalable code and performance."</p>
+            </div>
+        </div>
+
+        <div class="team-card flex flex-col items-center pb-8">
+            <div class="w-full h-80 bg-gray-200 mb-6">
+                <img src="hardware.jpg" alt="Prof 7" class="w-full h-full object-cover">
+            </div>
+            <div class="px-4 text-center">
+                <span class="exp-badge">6+ Years Experience</span>
+                <h3 class="role-title mb-2">UI/UX Researcher</h3>
+                <p class="font-bold text-gray-800 mb-4">Kavita Jain</p>
+                <p class="desc-text">"Understanding user behavior to create seamless digital journeys. Specializing in Figma and user testing."</p>
+            </div>
+        </div>
+
+        <div class="team-card flex flex-col items-center pb-8">
+            <div class="w-full h-80 bg-gray-200 mb-6">
+                <img src="social.jpg" alt="Prof 8" class="w-full h-full object-cover">
+            </div>
+            <div class="px-4 text-center">
+                <span class="exp-badge">9+ Years Experience</span>
+                <h3 class="role-title mb-2">Python & AI Trainer</h3>
+                <p class="font-bold text-gray-800 mb-4">Amitabh Dev</p>
+                <p class="desc-text">"Leading the future with Artificial Intelligence and Machine Learning. Simplifying complex algorithms for students."</p>
+            </div>
+        </div>
+
+          <div class="team-card flex flex-col items-center pb-8">
+            <div class="w-full h-80 bg-gray-200 mb-6">
+                <img src="countant2.jpg" alt="Prof 8" class="w-full h-full object-cover">
+            </div>
+            <div class="px-4 text-center">
+                <span class="exp-badge">9+ Years Experience</span>
+                <h3 class="role-title mb-2">Python & AI Trainer</h3>
+                <p class="font-bold text-gray-800 mb-4">Amitabh Dev</p>
+                <p class="desc-text">"Leading the future with Artificial Intelligence and Machine Learning. Simplifying complex algorithms for students."</p>
+            </div>
+        </div>
+          <div class="team-card flex flex-col items-center pb-8">
+            <div class="w-full h-80 bg-gray-200 mb-6">
+                <img src="hair.jpg" alt="Prof 8" class="w-full h-full object-cover">
+            </div>
+            <div class="px-4 text-center">
+                <span class="exp-badge">9+ Years Experience</span>
+                <h3 class="role-title mb-2">Python & AI Trainer</h3>
+                <p class="font-bold text-gray-800 mb-4">Amitabh Dev</p>
+                <p class="desc-text">"Leading the future with Artificial Intelligence and Machine Learning. Simplifying complex algorithms for students."</p>
+            </div>
+        </div>
+          <div class="team-card flex flex-col items-center pb-8">
+            <div class="w-full h-80 bg-gray-200 mb-6">
+                <img src="addminstratiove.jpg" alt="Prof 8" class="w-full h-full object-cover">
+            </div>
+            <div class="px-4 text-center">
+                <span class="exp-badge">9+ Years Experience</span>
+                <h3 class="role-title mb-2">Python & AI Trainer</h3>
+                <p class="font-bold text-gray-800 mb-4">Amitabh Dev</p>
+                <p class="desc-text">"Leading the future with Artificial Intelligence and Machine Learning. Simplifying complex algorithms for students."</p>
+            </div>
+        </div>
+
+          <div class="team-card flex flex-col items-center pb-8">
+            <div class="w-full h-80 bg-gray-200 mb-6">
+                <img src="counsellor.jpg" alt="Prof 8" class="w-full h-full object-cover">
+            </div>
+            <div class="px-4 text-center">
+                <span class="exp-badge">9+ Years Experience</span>
+                <h3 class="role-title mb-2">Python & AI Trainer</h3>
+                <p class="font-bold text-gray-800 mb-4">Amitabh Dev</p>
+                <p class="desc-text">"Leading the future with Artificial Intelligence and Machine Learning. Simplifying complex algorithms for students."</p>
+            </div>
+        </div>
+
+          <div class="team-card flex flex-col items-center pb-8">
+            <div class="w-full h-80 bg-gray-200 mb-6">
+                <img src="countant3.jpg" alt="Prof 8" class="w-full h-full object-cover">
+            </div>
+            <div class="px-4 text-center">
+                <span class="exp-badge">9+ Years Experience</span>
+                <h3 class="role-title mb-2">Python & AI Trainer</h3>
+                <p class="font-bold text-gray-800 mb-4">Amitabh Dev</p>
+                <p class="desc-text">"Leading the future with Artificial Intelligence and Machine Learning. Simplifying complex algorithms for students."</p>
+            </div>
+        </div>
+
+          <div class="team-card flex flex-col items-center pb-8">
+            <div class="w-full h-80 bg-gray-200 mb-6">
+                <img src="nail.jpg" alt="Prof 8" class="w-full h-full object-cover">
+            </div>
+            <div class="px-4 text-center">
+                <span class="exp-badge">9+ Years Experience</span>
+                <h3 class="role-title mb-2">Python & AI Trainer</h3>
+                <p class="font-bold text-gray-800 mb-4">Amitabh Dev</p>
+                <p class="desc-text">"Leading the future with Artificial Intelligence and Machine Learning. Simplifying complex algorithms for students."</p>
+            </div>
+        </div>
+
+          <div class="team-card flex flex-col items-center pb-8">
+            <div class="w-full h-80 bg-gray-200 mb-6">
+                <img src="student.jpg" alt="Prof 8" class="w-full h-full object-cover">
+            </div>
+            <div class="px-4 text-center">
+                <span class="exp-badge">9+ Years Experience</span>
+                <h3 class="role-title mb-2">Python & AI Trainer</h3>
+                <p class="font-bold text-gray-800 mb-4">Amitabh Dev</p>
+                <p class="desc-text">"Leading the future with Artificial Intelligence and Machine Learning. Simplifying complex algorithms for students."</p>
+            </div>
+        </div>
+
+        <script>
+const hamburger = document.querySelector('.hamburger');
+const navLinks = document.querySelector('.nav-links');
+
+hamburger.addEventListener('click', () => {
+    navLinks.classList.toggle('nav-active');
+    hamburger.classList.toggle('toggle');
+});
+</script>
+
+</body>
+</html>

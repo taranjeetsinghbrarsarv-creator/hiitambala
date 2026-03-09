@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HIIT | Student Result Portal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-dark: #0f172a;
+            --accent-gold: #ffb800;
+            --accent-cyan: #22d3ee;
+            --card-bg: rgba(30, 41, 59, 0.7);
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: linear-gradient(135deg, #020617 0%, #0f172a 100%);
+            color: white;
+            min-height: 100vh;
+        }
+
+        /* Animated Mesh Background */
+        .result-bg {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at 80% 20%, rgba(34, 211, 238, 0.1), transparent 40%),
+                        radial-gradient(circle at 20% 80%, rgba(251, 184, 0, 0.05), transparent 40%);
+            z-index: -1;
+        }
+
+        .glass-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 2rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Result Search Input */
+        .search-input {
+            background: rgba(15, 23, 42, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .search-input:focus {
+            border-color: var(--accent-cyan);
+            box-shadow: 0 0 20px rgba(34, 211, 238, 0.2);
+            outline: none;
+        }
+
+        /* Table Styling */
+        .result-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0 10px;
+        }
+
+        .result-table th {
+            color: #94a3b8;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.75rem;
+            padding: 15px;
+        }
+
+        .result-table tr {
+            background: rgba(255, 255, 255, 0.03);
+            transition: all 0.3s ease;
+        }
+
+        .result-table tr:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: scale(1.01);
+        }
+
+        .result-table td {
+            padding: 20px 15px;
+            font-weight: 500;
+        }
+
+        .status-pass {
+            color: #4ade80;
+            background: rgba(74, 222, 128, 0.1);
+            padding: 5px 12px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+        }
+
+        .badge-logo {
+            background: #ff3e3e;
+            padding: 8px 16px;
+            font-weight: 900;
+            clip-path: polygon(10% 0, 100% 0, 90% 100%, 0% 100%);
+            box-shadow: 4px 4px 0px var(--accent-cyan);
+        }
+    </style>
+</head>
+<body class="p-4 md:p-12">
+
+    <div class="result-bg"></div>
+
+    <div class="max-w-6xl mx-auto">
+        <div class="flex flex-col md:flex-row justify-between items-center mb-12 gap-6">
+            <div class="flex items-center gap-4">
+                <div class="badge-logo text-2xl italic">HIIT</div>
+                <div>
+                    <h1 class="text-3xl font-black tracking-tight">Examination Portal</h1>
+                    <p class="text-cyan-400 text-xs font-bold uppercase tracking-widest">Digital Result System 2026</p>
+                </div>
+            </div>
+            
+            <div class="relative w-full md:w-96">
+                <input type="text" placeholder="Enter Roll Number..." class="search-input w-full p-4 pl-12 rounded-2xl">
+                <i class="fas fa-search absolute left-4 top-1/2 -translate-y-1/2 text-slate-500"></i>
+            </div>
+        </div>
+
+        <div class="glass-card p-8 mb-8 grid md:grid-cols-3 gap-8 items-center border-l-4 border-cyan-400">
+            <div class="flex items-center gap-5">
+                <div class="w-16 h-16 bg-cyan-500/20 rounded-2xl flex items-center justify-center text-2xl text-cyan-400">
+                    <i class="fas fa-user-graduate"></i>
+                </div>
+                <div>
+                    <p class="text-slate-400 text-xs font-bold uppercase">Student Name</p>
+                    <h3 class="text-xl font-bold">Aman Sharma</h3>
+                </div>
+            </div>
+            <div>
+                <p class="text-slate-400 text-xs font-bold uppercase">Course / Semester</p>
+                <h3 class="text-xl font-bold">Full Stack Web Dev - Sem IV</h3>
+            </div>
+            <div class="text-right">
+                <p class="text-slate-400 text-xs font-bold uppercase">Overall Grade</p>
+                <h3 class="text-3xl font-black text-cyan-400">A+</h3>
+            </div>
+        </div>
+
+        <div class="glass-card p-6 overflow-x-auto">
+            <table class="result-table">
+                <thead>
+                    <tr>
+                        <th class="text-left">Subject Code</th>
+                        <th class="text-left">Subject Name</th>
+                        <th class="text-center">Max Marks</th>
+                        <th class="text-center">Obtained</th>
+                        <th class="text-center">Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="rounded-l-2xl text-cyan-400">IT-401</td>
+                        <td>Advanced React.js Architecture</td>
+                        <td class="text-center">100</td>
+                        <td class="text-center font-bold">92</td>
+                        <td class="text-center rounded-r-2xl"><span class="status-pass">PASS</span></td>
+                    </tr>
+                    <tr>
+                        <td class="rounded-l-2xl text-cyan-400">IT-402</td>
+                        <td>Backend Engineering with Node.js</td>
+                        <td class="text-center">100</td>
+                        <td class="text-center font-bold">88</td>
+                        <td class="text-center rounded-r-2xl"><span class="status-pass">PASS</span></td>
+                    </tr>
+                    <tr>
+                        <td class="rounded-l-2xl text-cyan-400">IT-403</td>
+                        <td>Database Management (MongoDB)</td>
+                        <td class="text-center">100</td>
+                        <td class="text-center font-bold">95</td>
+                        <td class="text-center rounded-r-2xl"><span class="status-pass">PASS</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="mt-8 flex flex-wrap gap-4 justify-center">
+            <button onclick="window.print()" class="px-8 py-4 bg-white/5 hover:bg-white/10 border border-white/10 rounded-2xl font-bold transition-all flex items-center gap-2">
+                <i class="fas fa-print"></i> Print Marksheet
+            </button>
+            <button class="px-8 py-4 bg-cyan-600 hover:bg-cyan-500 rounded-2xl font-bold shadow-lg shadow-cyan-500/20 transition-all flex items-center gap-2">
+                <i class="fas fa-download"></i> Download PDF
+            </button>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HIIT Ambala | Professional Gallery</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --dark: #0f172a;
+            --secondary: #64748b;
+            --gradient: linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.8));
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+        body { background: #f8fafc; overflow-x: hidden; }
+
+        /* --- 1. NAVIGATION BAR (Centered) --- */
+        nav {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 18px 20px;
+            display: flex;
+            flex-direction: column; /* Center stack */
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+            position: sticky;
+            top: 0; z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+        .logo { font-size: 1.8rem; font-weight: 800; color: var(--dark); letter-spacing: -1px; }
+        .logo span { color: var(--primary); }
+        .nav-links { display: flex; list-style: none; gap: 35px; }
+        .nav-links a { text-decoration: none; color: var(--dark); font-weight: 500; font-size: 0.95rem; transition: 0.3s; }
+        .nav-links a:hover { color: var(--primary); }
+
+        /* --- 2. PROFESSIONAL HEADER (With Background Image) --- */
+        .header-section {
+            /* Background image added here */
+            background: var(--gradient), url('https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=2070&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            padding: 120px 20px 200px 20px;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+        .header-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .header-section h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 15px;
+            letter-spacing: -1px;
+            line-height: 1.2;
+            text-transform: uppercase;
+        }
+        .header-section h1 span {
+            color: var(--primary);
+            background: white;
+            padding: 0 15px;
+            border-radius: 10px;
+        }
+        .header-section p {
+            font-size: 1.2rem;
+            color: #cbd5e1;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* --- 3. GALLERY CONTAINER --- */
+        .gallery-container {
+            max-width: 1400px;
+            margin: -100px auto 100px;
+            padding: 0 40px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        /* --- 4. IMAGE CARDS --- */
+        .gallery-item {
+            position: relative;
+            height: 300px;
+            border-radius: 24px;
+            overflow: hidden;
+            cursor: pointer;
+            background: #fff;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            animation: cardAppear 0.8s ease backwards;
+        }
+
+        @keyframes cardAppear {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .gallery-item img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            transition: 0.6s all ease;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 30px 60px rgba(37, 99, 235, 0.15);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .overlay {
+            position: absolute; inset: 0;
+            background: linear-gradient(to top, rgba(15, 23, 42, 0.8), transparent);
+            display: flex; align-items: flex-end; justify-content: center;
+            padding-bottom: 30px;
+            opacity: 0; transition: 0.4s;
+        }
+        .gallery-item:hover .overlay { opacity: 1; }
+        .overlay i { 
+            background: white; color: var(--primary);
+            width: 50px; height: 50px;
+            display: flex; align-items: center; justify-content: center;
+            border-radius: 50%; font-size: 1.2rem;
+            transform: translateY(20px); transition: 0.4s ease;
+        }
+        .gallery-item:hover .overlay i { transform: translateY(0); }
+
+        /* --- 5. LIGHTBOX --- */
+        .lightbox {
+            position: fixed; inset: 0;
+            background: rgba(15, 23, 42, 0.98);
+            display: none; justify-content: center; align-items: center;
+            z-index: 2000; backdrop-filter: blur(15px);
+        }
+        .lightbox.active { display: flex; }
+        .lightbox img {
+            max-width: 90%; max-height: 85vh;
+            border-radius: 20px;
+            box-shadow: 0 0 100px rgba(0,0,0,0.5);
+            animation: zoomIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        @keyframes zoomIn { from { transform: scale(0.5); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+        .close-lightbox { position: absolute; top: 30px; right: 40px; color: white; font-size: 45px; cursor: pointer; opacity: 0.7; transition: 0.3s; }
+        .close-lightbox:hover { opacity: 1; transform: rotate(90deg); }
+
+        /* --- 6. FOOTER --- */
+        footer {
+            background: var(--dark);
+            color: white; padding: 100px 8% 40px;
+            border-top-left-radius: 60px; border-top-right-radius: 60px;
+        }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 50px; }
+        .footer-col h3 { margin-bottom: 25px; font-size: 1.3rem; position: relative; }
+        .footer-col h3::after { content: ''; position: absolute; left: 0; bottom: -8px; width: 40px; height: 3px; background: var(--primary); }
+        .footer-col p, .footer-col li { color: #94a3b8; font-size: 0.95rem; margin-bottom: 12px; line-height: 1.7; }
+        .socials { margin-top: 20px; }
+        .socials i { font-size: 1.4rem; margin-right: 20px; cursor: pointer; transition: 0.3s; color: #64748b; }
+        .socials i:hover { color: var(--primary); transform: translateY(-5px); }
+
+        @media (max-width: 768px) {
+            .header-section h1 { font-size: 2.8rem; }
+            .gallery-container { padding: 0 20px; margin-top: -80px; }
+            .nav-links { gap: 15px; }
+        }
+
+        :root {
+    --primary: #ff3e00; 
+    --dark: #121212;
+    --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.navbar {
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    height: 90px;
+    display: flex;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+}
+
+.nav-container {
+    width: 95%;
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr; /* Logo, Links, aur Button ko equal space deta hai */
+    align-items: center;
+}
+
+/* --- LOGO SECTION --- */
+.logo-wrapper a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    gap: 12px;
+}
+
+.nav-logo {
+    height: 50px; /* Logo ki height yahan se adjust karein */
+    width: auto;
+    transition: var(--transition);
+}
+
+.logo-text {
+    font-size: 1.4rem;
+    font-weight: 900;
+    color: var(--dark);
+    letter-spacing: -1px;
+    text-transform: uppercase;
+}
+
+.logo-text span { color: var(--primary); }
+
+.logo-wrapper:hover .nav-logo {
+    transform: scale(1.1) rotate(-3deg); /* Logo hover par thoda sa ghumega aur zoom hoga */
+}
+
+/* --- CENTER LINKS --- */
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 35px;
+    justify-content: center;
+}
+
+.nav-item {
+    text-decoration: none;
+    color: var(--dark);
+    font-weight: 700;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    position: relative;
+    padding-bottom: 5px;
+    transition: var(--transition);
+}
+
+/* Link Animation (Underline) */
+.nav-item::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 3px;
+    bottom: 0;
+    left: 0;
+    background: var(--primary);
+    transition: var(--transition);
+}
+
+.nav-item:hover { color: var(--primary); }
+.nav-item:hover::after { width: 100%; }
+
+/* --- RIGHT BUTTON --- */
+.nav-right {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.btn-join {
+    background: var(--dark);
+    color: white;
+    padding: 12px 30px;
+    border-radius: 4px; /* Sharp professional look */
+    text-decoration: none;
+    font-weight: 800;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border: 2px solid var(--dark);
+    transition: var(--transition);
+}
+
+.btn-join:hover {
+    background: transparent;
+    color: var(--dark);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    transform: translateY(-3px);
+}
+
+/* Mobile Responsive */
+@media (max-width: 900px) {
+    .nav-links { display: none; } /* Hide links on mobile */
+    .nav-container { grid-template-columns: 1fr 1fr; }
+}
+
+/* Modal Overlay Background */
+.modal-overlay {
+    display: none; /* Default hidden */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Form Container */
+.modal-content {
+    background: #fff;
+    padding: 30px;
+    border-radius: 20px;
+    width: 90%;
+    max-width: 450px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    position: relative;
+    animation: popIn 0.3s ease-out;
+}
+
+@keyframes popIn {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #f1f1f1;
+    padding-bottom: 10px;
+}
+
+.close-modal {
+    font-size: 28px;
+    cursor: pointer;
+    color: #666;
+}
+
+.input-group {
+    margin-bottom: 15px;
+}
+
+.input-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.input-group input, .input-group select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    outline: none;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 15px;
+    background: #2563eb;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.submit-btn:hover { background: #1e40af; }
+    </style>
+</head>
+<body>
+
+ <nav class="navbar">
+    <div class="nav-container">
+        <div class="logo-wrapper">
+            <a href="index.html">
+                <img src="logo.jpg" alt="HIIT AMBALA Logo" class="nav-logo">
+                <span class="logo-text">HIIT <span>AMBALA</span></span>
+            </a>
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="index.html" class="nav-item">Home</a></li>
+            <li><a href="about.html" class="nav-item">About</a></li>
+            <li><a href="gallery.html" class="nav-item">Gallery</a></li>
+            <li><a href="contact.html" class="nav-item">Contact</a></li>
+        </ul>
+
+        <div class="nav-right">
+            <a href="javascript:void(0)" id="applyBtn" class="btn-join">Apply Now</a>
+        </div>
+    </div>
+</nav>
+
+<div id="applyModal" class="modal-overlay">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3>Student Application 2026</h3>
+            <span class="close-modal">&times;</span>
+        </div>
+        <form id="studentForm">
+            <div class="input-group">
+                <label>Full Name</label>
+                <input type="text" id="userName" placeholder="Enter your name" required>
+            </div>
+            <div class="input-group">
+                <label>Phone Number</label>
+                <input type="tel" id="userPhone" placeholder="Enter 10 digit number" required>
+            </div>
+            <div class="input-group">
+                <label>Course</label>
+                <select id="userCourse">
+                    <option value="Web Development">Web Development</option>
+                    <option value="Graphic Design">Graphic Design</option>
+                    <option value="Digital Marketing">Digital Marketing</option>
+                </select>
+            </div>
+            <button type="submit" class="submit-btn">Submit Application</button>
+        </form>
+    </div>
+</div>
+    <div class="header-section">
+        <div class="header-content">
+            <h1>HIIT <span>Moments</span></h1>
+            <p>Capturing the journey of excellence, innovation, and success at HIIT Ambala.</p>
+        </div>
+    </div>
+
+    <div class="gallery-container">
+        <div class="gallery-grid" id="mainGallery">
+            </div>
+    </div>
+
+    <div class="lightbox" id="lightbox">
+        <span class="close-lightbox">&times;</span>
+        <img src="" id="fullImage">
+    </div>
+
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h3>Our Mission</h3>
+                <p>To provide industry-leading technical skills and empower the next generation of digital professionals in Ambala.</p>
+                <div class="socials">
+                    <i class="fab fa-facebook-f"></i>
+                    <i class="fab fa-instagram"></i>
+                    <i class="fab fa-linkedin-in"></i>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <ul style="list-style: none;">
+                    <li>Home</li>
+                    <li>Courses</li>
+                    <li>Verify Certificate</li>
+                    <li>Student Portal</li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Contact Us</h3>
+                <p><i class="fas fa-map-marker-alt" style="margin-right: 10px;"></i> Near City Station, Ambala</p>
+                <p><i class="fas fa-phone" style="margin-right: 10px;"></i> +91 98765-XXXXX</p>
+                <p><i class="fas fa-envelope" style="margin-right: 10px;"></i> info@hiitambala.com</p>
+            </div>
+        </div>
+        <p style="text-align: center; margin-top: 60px; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 30px; color: #475569; font-size: 0.9rem;">
+            &copy; 2026 HIIT Ambala. All Rights Reserved.
+        </p>
+    </footer>
+
+    <script>
+        // --- Logic remains unchanged as requested ---
+        const gallery = document.getElementById('mainGallery');
+        const myImages = [
+            "https://hiitambala.com/hiit-admin/uploads/G-1_50.webp",
+            "https://hiitambala.com/hiit-admin/uploads/G-2_50.webp",
+            "https://hiitambala.com/hiit-admin/uploads/G-4_50.webp",
+            "https://hiitambala.com/hiit-admin/uploads/G-3_1_50.webp",
+            "https://hiitambala.com/hiit-admin/uploads/G-7_50.webp",
+            "https://hiitambala.com/hiit-admin/uploads/G-11_50.webp",
+            "https://hiitambala.com/hiit-admin/uploads/G-12_50.webp",
+            "https://hiitambala.com/hiit-admin/uploads/G-21_50.webp",
+            "https://hiitambala.com/hiit-admin/uploads/G-27.webp",
+            "https://hiitambala.com/hiit-admin/uploads/G-18_50.webp",
+            "https://hiitambala.com/hiit-admin/uploads/G-13_50.webp",
+            "https://hiitambala.com/hiit-admin/uploads/G-15_50.webp",
+            "https://hiitambala.com/hiit-admin/uploads/G-9_50.webp",
+            "https://hiitambala.com/hiit-admin/uploads/G-24_50.webp",
+            "https://hiitambala.com/hiit-admin/uploads/G-22_50.webp",
+            "https://hiitambala.com/hiit-admin/uploads/G-32_50.webp",
+            
+        ];
+
+        myImages.forEach((imgSrc, index) => {
+            const item = document.createElement('div');
+            item.className = 'gallery-item';
+            item.style.animationDelay = `${index * 0.05}s`;
+            item.innerHTML = `
+                <img src="${imgSrc}" alt="HIIT Image">
+                <div class="overlay"><i class="fas fa-expand-alt"></i></div>
+            `;
+            item.addEventListener('click', () => openLightbox(imgSrc));
+            gallery.appendChild(item);
+        });
+
+        const lb = document.getElementById('lightbox');
+        const fullImg = document.getElementById('fullImage');
+        const close = document.querySelector('.close-lightbox');
+
+        function openLightbox(src) {
+            fullImg.src = src;
+            lb.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        close.onclick = () => {
+            lb.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        };
+
+        lb.onclick = (e) => {
+            if(e.target !== fullImg) {
+                lb.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        };
+
+    
+    const modal = document.getElementById('applyModal');
+    const applyBtn = document.getElementById('applyBtn');
+    const closeBtn = document.querySelector('.close-modal');
+    const form = document.getElementById('studentForm');
+
+    // 1. Modal Open karna
+    applyBtn.addEventListener('click', () => {
+        modal.style.display = 'flex';
+        document.body.style.overflow = 'hidden'; // Scroll stop
+    });
+
+    // 2. Modal Close karna
+    closeBtn.addEventListener('click', () => {
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto'; // Scroll start
+    });
+
+    // 3. Form Submit hone par Professional Message
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        const name = document.getElementById('userName').value;
+        const btn = form.querySelector('button');
+
+        btn.innerText = "Processing...";
+        btn.disabled = true;
+
+        setTimeout(() => {
+            // Aapka requested message pop-up
+            alert(`✅ Success! Thank you ${name}. Your application has been received.`);
+            
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+            form.reset();
+            btn.innerText = "Submit Application";
+            btn.disabled = false;
+        }, 1500);
+    });
+
+    // Bahar click karne par close
+    window.onclick = (event) => {
+        if (event.target == modal) {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+    }
+    </script>
+</body>
+</html>
