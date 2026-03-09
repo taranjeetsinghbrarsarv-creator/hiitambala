@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HIIT Ambala | High-Intensity Institute of Technology</title>
@@ -1056,6 +1058,21 @@ display:flex;
 }
 
 }
+
+.nav-links {
+  display: none;
+  flex-direction: column;
+  /* other styles */
+}
+
+.nav-links.active {
+  display: flex; /* ya block */
+}
+
+html, body {
+  max-width: 100%;
+  overflow-x: hidden; /* यह दाएं-बाएं की फालतू स्क्रॉलिंग रोक देगा */
+}
 </style>
 <body>
     <div id="toast-container"></div>
@@ -1065,19 +1082,19 @@ display:flex;
         <div class="hiit">
            <img src="logo.jpg" alt="Haryana Institute Logo">
         </div>
+        <div class="logo-text">
+          HARYANA INSTITUTE <br>
+          <span style="font-size: 0.8rem; color: #888;">OF INFO TECH</span>
         </div>
-        <div class="logo-text">HARYANA INSTITUTE <br><span style="font-size: 0.8rem; color: #888;">OF INFO TECH</span></div>
     </a>
 
     <button id="menu-btn" class="menu-btn">
-  <span></span>
-  <span></span>
-  <span></span>
-</button>
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
 
-<ul class="nav-links" id="nav-links"></ul>
-
-    <ul class="nav-links">
+    <ul class="nav-links" id="nav-links">
         <li><a href="index.html">Home</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="gallry.html">Gallery</a></li>
@@ -1751,15 +1768,11 @@ demoForm.addEventListener('submit', (e) => {
     }, 1500);
 });
 
-
-
 const menuBtn = document.getElementById("menu-btn");
 const navLinks = document.getElementById("nav-links");
 
-menuBtn.addEventListener("click", function(){
-
-navLinks.classList.toggle("active");
-
+menuBtn.addEventListener("click", () => {
+  navLinks.classList.toggle("active");
 });
 </script>
 
