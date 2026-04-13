@@ -378,6 +378,175 @@
 }
 
 .submit-btn:hover { background: #1e40af; }
+
+/* taranjeet singh */
+
+/* Navbar Spacing */
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 25px;
+}
+
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 20px; /* Isse Button aur 3-lines ke beech space aayega */
+}
+
+/* Apply Now Button Style */
+.btn-apply {
+    background: #2563eb; /* Professional Blue */
+    color: white;
+    padding: 10px 22px;
+    border-radius: 50px;
+    font-weight: 700;
+    text-decoration: none;
+    font-size: 14px;
+    transition: 0.3s;
+    text-transform: uppercase;
+    box-shadow: 0 4px 10px rgba(37, 99, 235, 0.2);
+}
+
+.btn-apply:hover {
+    background: #1d4ed8;
+    transform: translateY(-2px);
+}
+
+/* 3 Lines (Hamburger) */
+.hamburger {
+    display: none;
+    cursor: pointer;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.bar {
+    width: 28px;
+    height: 3px;
+    background: #333;
+    border-radius: 2px;
+}
+
+/* Mobile View */
+@media (max-width: 768px) {
+    .hamburger { display: flex; }
+    
+    /* Apply button ko thora chota karna mobile par */
+    .btn-apply {
+        padding: 8px 15px;
+        font-size: 12px;
+    }
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* This pushes items to the edges */
+    padding: 10px 5%;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 20px; /* Space between the button and the menu icon */
+}.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* This pushes items to the edges */
+    padding: 10px 5%;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 20px; /* Space between the button and the menu icon */
+}
+
+/* Container jo logo aur baaki items ko handle karega */
+.nav-container {
+    display: flex;
+    justify-content: space-between; /* Logo left aur baaki sab right mein push karega */
+    align-items: center;
+    padding: 10px 4%; /* Horizontal padding thodi kam ki hai taki logo edge ke paas rahe */
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Logo styling - Ensure logo left side par fix rahe */
+.logo {
+    display: flex;
+    align-items: center;
+    flex: 0 0 auto; /* Yeh logo ko shrink hone se rokega */
+}
+
+.logo img {
+    height: 50px; /* Aapke logo ki height ke hisab se adjust karein */
+    width: auto;
+}
+
+/* Right side items (Button + Hamburger) */
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Button aur menu ke beech ka gap */
+    flex-shrink: 0;
+}
+
+/* Apply Now Button - Iska size thoda bada kiya hai */
+.btn-apply {
+    background: #2563eb;
+    color: white !important;
+    padding: 12px 28px; /* Padding badhane se button bada dikhega */
+    border-radius: 50px;
+    font-weight: 700;
+    text-decoration: none;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+    white-space: nowrap; /* Button text do line mein nahi aayega */
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+}
+
+.btn-apply:hover {
+    background: #1d4ed8;
+    transform: scale(1.05); /* Hover par thoda pop-out effect */
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 768px) {
+    .nav-container {
+        padding: 10px 15px; /* Mobile par thoda gap kam */
+    }
+
+    .btn-apply {
+        padding: 8px 18px; /* Mobile par padding adjust */
+        font-size: 11px;
+    }
+}
+
+/* Mobile par menu shuru mein chhupa rahega */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none; /* Default band */
+        flex-direction: column;
+        position: absolute;
+        top: 80px;
+        left: 0;
+        width: 100%;
+        background: white;
+        z-index: 99;
+    }
+
+    /* JAB CLICK HOGA: Yeh class JS add karegi */
+    .nav-links.active {
+        display: flex !important; /* Isse menu dikhne lagega */
+    }
+}
+
     </style>
 </head>
 <body>
@@ -386,24 +555,29 @@
     <div class="nav-container">
         <div class="logo-wrapper">
             <a href="index.html">
-                <img src="logo.jpg" alt="HIIT AMBALA Logo" class="nav-logo">
+                <img src="logo.jpg" alt="Logo" class="nav-logo">
                 <span class="logo-text">HIIT <span>AMBALA</span></span>
             </a>
         </div>
 
-        <ul class="nav-links">
+        <ul class="nav-links" id="nav-list">
             <li><a href="index.html" class="nav-item">Home</a></li>
             <li><a href="about.html" class="nav-item">About</a></li>
-            <li><a href="gallery.html" class="nav-item">Gallery</a></li>
-            <li><a href="contact.html" class="nav-item">Contact</a></li>
+            <li><a href="" class="nav-item">Gallery</a></li>
+             <li><a href="contact.html" class="nav-item">Contact</a></li>
         </ul>
 
         <div class="nav-right">
-            <a href="javascript:void(0)" id="applyBtn" class="btn-join">Apply Now</a>
+            <a href="#" id="applyBtn" class="btn-apply">Apply Now</a>
+            
+           <div class="hamburger" id="mobile-menu">
+    <span class="bar"></span>
+    <span class="bar"></span>
+    <span class="bar"></span>
+</div>
         </div>
     </div>
 </nav>
-
 <div id="applyModal" class="modal-overlay">
     <div class="modal-content">
         <div class="modal-header">
@@ -584,6 +758,19 @@
             document.body.style.overflow = 'auto';
         }
     }
+
+    // Elements ko select karein
+    const menuBtn = document.getElementById('mobile-menu');
+    const navList = document.getElementById('nav-list');
+
+    // Click hone par function chalayein
+    menuBtn.addEventListener('click', () => {
+        // Console check (F12 daba kar dekhein ki click chal raha hai ya nahi)
+        console.log("Menu button clicked!"); 
+        
+        // 'active' class ko toggle karein
+        navList.classList.toggle('active');
+    });
     </script>
 </body>
 </html>
