@@ -90,21 +90,147 @@
             .contact-container { grid-template-columns: 1fr; margin-top: 40px; }
             .form-row { grid-template-columns: 1fr; }
         }
+
+        /* --- Navbar Styling --- */
+.main-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 4%;
+    background: #ffffff; /* White Theme */
+    box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+    height: 90px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+/* --- Logo & Institute Name --- */
+.logo-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    gap: 12px;
+}
+
+.logo-link img { height: 55px; }
+
+.logo-text { display: flex; flex-direction: column; }
+
+.hiit-title {
+    font-size: 22px;
+    font-weight: 800;
+    color: #333;
+    line-height: 1;
+}
+
+.full-name {
+    font-size: 11px;
+    color: #666;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* --- Menu Links --- */
+.nav-links { display: flex; list-style: none; gap: 25px; }
+.nav-links a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 600;
+    font-size: 15px;
+    transition: 0.3s;
+}
+.nav-links a:hover { color: #007bff; }
+
+/* --- Blue Apply Button --- */
+.apply-btn {
+    background: #007bff; /* Royal Blue */
+    color: #fff !important;
+    padding: 10px 22px;
+    border-radius: 4px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: 0.3s;
+}
+.apply-btn:hover { background: #0056b3; }
+
+/* --- Hamburger Menu --- */
+.hamburger {
+    display: none;
+    cursor: pointer;
+    flex-direction: column;
+    gap: 6px;
+}
+.hamburger span {
+    width: 28px;
+    height: 3px;
+    background: #333;
+    transition: 0.4s;
+}
+
+/* --- Mobile Responsive (992px) --- */
+@media screen and (max-width: 992px) {
+    .full-name { display: none; } /* Mobile par sirf HIIT dikhega space ke liye */
+    
+    .desktop-only { display: none; }
+    
+    .hamburger { display: flex; }
+
+    .nav-links {
+        position: fixed;
+        right: -100%;
+        top: 0;
+        height: 100vh;
+        width: 100%;
+        background: rgba(255, 255, 255, 0.98);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transition: 0.5s ease;
+    }
+
+    .nav-links.active { right: 0; }
+    
+    .nav-links li { margin: 20px 0; }
+    
+    .nav-links a { font-size: 22px; }
+}
+
+/* Hamburger Animation (X) */
+.toggle .line1 { transform: rotate(-45deg) translate(-6px, 6px); }
+.toggle .line2 { opacity: 0; }
+.toggle .line3 { transform: rotate(45deg) translate(-6px, -6px); }
     </style>
 </head>
 <body>
 
-    <nav>
-        <div class="logo">HIIT AMBALA</div>
-        <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="coures.html">Courses</a></li>
-            <li><a href="patner.html">Partners</a></li>
-            <li><a href="#" class="btn-student">Student Section</a></li>
-        </ul>
-    </nav>
+    <nav class="main-nav">
+    <div class="logo-area">
+        <a href="index.html" class="logo-link">
+            <img src="logo.jpg" alt="HIIT Logo">
+            <div class="logo-text">
+                <span class="hiit-title">HIIT</span>
+                <span class="full-name">Haryana Institute of Information Technology</span>
+            </div>
+        </a>
+    </div>
 
+    <ul class="nav-links" id="navMenu">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="courses.html">Courses</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li class="mobile-only"><a href="#" class="apply-btn">Apply Now</a></li>
+    </ul>
+
+        
+        <div class="hamburger" id="hamburger">
+            <span class="line1"></span>
+            <span class="line2"></span>
+            <span class="line3"></span>
+        </div>
+    </div>
+</nav>
     <section class="contact-hero">
         <h1>Get In Touch</h1>
         <p>Have questions? We're here to help you build your future.</p>
@@ -203,6 +329,16 @@
     <footer style="background: var(--navy); color: white; padding: 40px; text-align: center;">
         <p>&copy; 2026 HIIT Ambala - Excellence in Professional Training.</p>
     </footer>
+
+    <script>
+    const burger = document.getElementById('hamburger');
+    const nav = document.getElementById('navMenu');
+
+    burger.addEventListener('click', () => {
+        nav.classList.toggle('active'); // Menu slide karega
+        burger.classList.toggle('toggle'); // 3 lines X banengi
+    });
+</script>
 
 </body>
 </html>
