@@ -1036,6 +1036,14 @@ background:white;
 
 /* MOBILE */
 
+/* ✅ DEFAULT (Desktop ke liye) */
+.nav-links {
+  display: flex;
+  gap: 25px;
+  list-style: none;
+}
+
+/* ✅ MOBILE */
 @media(max-width:768px){
 
 .menu-btn{
@@ -1059,12 +1067,6 @@ display:flex;
 
 }
 
-.nav-links {
-  display: none;
-  flex-direction: column;
-  /* other styles */
-}
-
 .nav-links.active {
   display: flex; /* ya block */
 }
@@ -1072,6 +1074,39 @@ display:flex;
 html, body {
   max-width: 100%;
   overflow-x: hidden; /* यह दाएं-बाएं की फालतू स्क्रॉलिंग रोक देगा */
+}
+
+/* MOBILE FIX - IMPORTANT ONLY */
+@media (max-width: 768px) {
+
+  /* Layout: 2 column → 1 column */
+  .lg\:grid-cols-2,
+  .md\:grid-cols-3 {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Heading size fix */
+  h1 {
+    font-size: 2rem !important;
+    line-height: 1.2;
+  }
+
+  /* Text readable */
+  p {
+    font-size: 0.9rem;
+  }
+
+  /* Images overflow fix */
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* Navbar spacing */
+  .premium-nav {
+    padding: 10px 15px;
+  }
+
 }
 </style>
 <body>
@@ -1100,14 +1135,14 @@ html, body {
         <li><a href="gallry.html">Gallery</a></li>
         <li><a href="coures.html">Courses</a></li>
         <li><a href="cosmatology.html">Cosmetology</a></li>
-        <li><a href="#">Blogs</a></li>
         <li><a href="team.html">Team</a></li>
         <li><a href="patner.html">Partner</a></li>
+        <li><a href="contact.html">Contact</a></li>
         <li class="student-li">
             <a href="#" class="student-trigger">Student Section ▾</a>
             <div class="dropdown-content">
                 <a href="admission.html">Admissions 2026</a>
-                <a href="result.html">Check Results</a>
+                <a href="#">Blogs</a>
                 <a href="#">Academic Calendar</a>
                 <a href="#">Certificate Request</a>
                 <a href="#">Examination Portal</a>
@@ -1554,6 +1589,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         // 3. Button Loading Animation
+
+        
         const originalText = submitBtn.innerText;
         submitBtn.disabled = true;
         submitBtn.innerHTML = `<i class="fas fa-spinner fa-spin"></i> Processing...`;
