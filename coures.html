@@ -84,40 +84,69 @@
     .nav-link-premium.active {
         color: #0f172a; /* slate-900 */
     }
+
+    @media (max-width: 768px) {
+  .logo-text {
+    display: block;
+    font-size: 12px;
+  }
+}
 </style>
     </style>
 </head>
-<nav class="bg-white/80 backdrop-blur-xl sticky top-0 z-[100] border-b border-slate-200/50 shadow-sm">
-    <div class="max-w-7xl mx-auto px-6 h-24 flex justify-between items-center">
+<nav class="bg-white sticky top-0 z-[100] border-b border-slate-200 shadow-sm w-full">
+    
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 h-20 flex items-center">
         
-        <div class="flex items-center space-x-3 flex-1">
-            <div class="relative group cursor-pointer">
-                <div class="absolute -inset-1 bg-gradient-to-r from-blue-600 to-indigo-500 rounded-full blur opacity-20 group-hover:opacity-60 transition duration-500"></div>
-                
-                <img src="logo.jpg" alt="HIIT Logo" class="relative w-14 h-14 object-contain transition-transform duration-500 group-hover:scale-110">
-            </div>
+        <div class="flex items-center gap-2 shrink-0 md:w-1/4">
+            <img src="logo.jpg" alt="HIIT Logo" class="h-10 sm:h-14 w-auto object-contain">
             
-            <div class="leading-tight hidden sm:block">
-                <span class="block font-black text-2xl tracking-tighter text-slate-900">HIIT<span class="text-blue-600">.</span></span>
-                <span class="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-400">Ambala Institute</span>
+            <div class="leading-tight">
+                <span class="block font-black text-sm sm:text-lg tracking-tight text-slate-900 uppercase">
+                    HARYANA INSTITUTE
+                </span>
+                <span class="block text-[7px] sm:text-[9px] font-bold uppercase tracking-wider text-slate-500">
+                    OF INFO TECH - AMBALA
+                </span>
             </div>
         </div>
 
-        <div class="hidden md:flex items-center justify-center space-x-10 flex-[2]">
-            <a href="index.html" class="nav-link-premium">Home</a>
-            <a href="courses.html" class="nav-link-premium active">Courses</a>
-            <a href="cosmatology.html" class="nav-link-premium">Cosmetology</a>
-            <a href="contact.html" class="nav-link-premium">Contact</a>
+        <div class="hidden lg:flex flex-1 justify-center items-center space-x-8">
+            <a href="index.html" class="font-bold text-slate-600 hover:text-blue-600 text-xs uppercase tracking-widest transition-all">Home</a>
+            <a href="courses.html" class="font-bold text-slate-600 hover:text-blue-600 text-xs uppercase tracking-widest transition-all">Courses</a>
+            <a href="cosmatology.html" class="font-bold text-slate-600 hover:text-blue-600 text-xs uppercase tracking-widest transition-all">Cosmetology</a>
+            <a href="contact.html" class="font-bold text-slate-600 hover:text-blue-600 text-xs uppercase tracking-widest transition-all">Contact</a>
         </div>
 
-        <div class="flex justify-end flex-1">
+        <div class="flex items-center justify-end gap-3 shrink-0 md:w-1/4">
+            
             <button onclick="toggleModal('formModal')" 
-                class="bg-slate-900 text-white px-8 py-3 rounded-xl font-bold hover:bg-blue-600 hover:scale-105 transition-all duration-300 shadow-xl shadow-slate-200 active:scale-95">
-                Apply Now
+                class="bg-blue-600 text-white px-4 py-2 sm:px-6 sm:py-2.5 rounded-full font-extrabold text-[10px] sm:text-xs uppercase tracking-widest shadow-md hover:bg-blue-700 transition-all active:scale-95">
+                Apply 2026
+            </button>
+
+            <button onclick="toggleMenu()" class="lg:hidden p-1 text-slate-700">
+                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
             </button>
         </div>
     </div>
+
+    <div id="mobileMenu" class="hidden lg:hidden bg-white border-t border-slate-100 shadow-2xl overflow-hidden transition-all duration-300">
+        <div class="flex flex-col p-5 space-y-4 font-bold text-slate-700 text-sm">
+            <a href="index.html" class="hover:text-blue-600 transition-colors border-b pb-2">Home</a>
+            <a href="courses.html" class="hover:text-blue-600 transition-colors border-b pb-2">Courses</a>
+            <a href="cosmatology.html" class="hover:text-blue-600 transition-colors border-b pb-2">Cosmetology</a>
+            <a href="contact.html" class="hover:text-blue-600 transition-colors">Contact</a>
+        </div>
+    </div>
 </nav>
+<script>
+function toggleMenu() {
+    document.getElementById("mobileMenu").classList.toggle("hidden");
+}
+</script>
 
     <section class="hero-overlay relative min-h-[80vh] flex items-center justify-center text-center px-6">
         <div class="relative z-10" data-aos="zoom-out">
