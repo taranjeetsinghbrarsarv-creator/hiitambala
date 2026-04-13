@@ -329,11 +329,110 @@
     .hero-container { grid-template-columns: 1fr; }
     .main-heading { font-size: 3rem; }
 }
+
+/* Hamburger Icon Styling */
+.hamburger {
+    display: none; /* Desktop par chupa rahega */
+    flex-direction: column;
+    cursor: pointer;
+    gap: 5px;
+    z-index: 1001;
+}
+
+.line {
+    width: 25px;
+    height: 3px;
+    background-color: #333;
+    transition: 0.3s;
+}
+
+/* Mobile Nav Menu (Hidden by default) */
+.mobile-nav {
+    display: none;
+    position: fixed;
+    top: 70px; /* Navbar ki height ke hisab se */
+    left: 0;
+    width: 100%;
+    background: white;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    z-index: 1000;
+}
+
+.mobile-links {
+    list-style: none;
+    padding: 20px;
+    text-align: center;
+}
+
+.mobile-links li {
+    padding: 15px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.mobile-links li a {
+    text-decoration: none;
+    color: #333;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* Responsive Logic */
+@media screen and (max-width: 992px) {
+    .nav-links, .desktop-only {
+        display: none; /* Desktop links hide kar do */
+    }
+
+    .hamburger {
+        display: flex; /* Mobile par 3 lines dikhao */
+    }
+}
+
+/* Jab menu open ho (JavaScript use karega) */
+.mobile-nav.active {
+    display: block;
+}
+
+/* Hamburger Animation to "X" */
+.hamburger.active .line:nth-child(1) { transform: rotate(45deg) translate(5px, 6px); }
+.hamburger.active .line:nth-child(2) { opacity: 0; }
+.hamburger.active .line:nth-child(3) { transform: rotate(-45deg) translate(5px, -6px); }
+
+
+/* Mobile Response for Counters and Content */
+@media screen and (max-width: 768px) {
+    /* Counter Section ko stack karein */
+    .counter-section { 
+        flex-direction: column;
+        padding: 40px 20px;
+        gap: 30px;
+    }
+
+    .counter-block {
+        width: 100%;
+        text-align: center;
+    }
+
+    /* Shaping Your Beauty Career wala section */
+    .about-section-container { /* Apni class name check karein */
+        flex-direction: column;
+        text-align: center;
+        padding: 20px;
+    }
+
+    .about-image, .about-text {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .about-text h2 {
+        font-size: 28px; /* Phone ke liye heading thodi choti */
+    }
+}
     </style>
 </head>
 <body>
 
-   <nav class="cosmo-navbar">
+ <nav class="cosmo-navbar">
     <div class="nav-container">
         <div class="nav-left">
             <a href="index.html" class="logo-wrapper">
@@ -353,12 +452,28 @@
         </ul>
 
         <div class="nav-right">
-            <a href="#" class="student-portal-btn">
+            <a href="#" class="student-portal-btn desktop-only">
                 <i class="fas fa-user-grad"></i> Student Section
             </a>
+            <div class="hamburger" id="hamburger">
+                <span class="line"></span>
+                <span class="line"></span>
+                <span class="line"></span>
+            </div>
         </div>
     </div>
 </nav>
+
+<div class="mobile-nav" id="mobileNav">
+    <ul class="mobile-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="coures.html">Courses</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="#" class="mobile-student-btn">Student Section</a></li>
+    </ul>
+</div>
+
 <section id="main-hero" class="hero-section-dark">
     <div class="hero-overlay">
         <div class="hero-container">
@@ -492,6 +607,22 @@
     <footer style="background: var(--navy); color: white; padding: 50px; text-align: center;">
         <p>&copy; 2026 HIIT Ambala. All Rights Reserved.</p>
     </footer>
+   <script>
+    const hamburger = document.getElementById('hamburger');
+    const mobileNav = document.getElementById('mobileNav');
 
+    hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('active');
+        mobileNav.classList.toggle('active');
+    });
+
+    // Link click karne par menu band ho jaye
+    document.querySelectorAll('.mobile-links a').forEach(link => {
+        link.addEventListener('click', () => {
+            hamburger.classList.remove('active');
+            mobileNav.classList.remove('active');
+        });
+    });
+</script>
 </body>
 </html>
