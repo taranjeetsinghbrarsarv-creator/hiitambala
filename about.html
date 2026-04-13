@@ -78,31 +78,47 @@
         }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-900 overflow-x-hidden">
+<nav class="bg-white/80 backdrop-blur-md border-b border-slate-100 sticky top-0 z-[100]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6"> <div class="flex justify-between items-center h-20">
 
-   <nav class="bg-white/80 backdrop-blur-md border-b border-slate-100 sticky top-0 z-[100]">
-    <div class="max-w-7xl mx-auto px-6">
-        <div class="flex justify-between items-center h-20">
-
-            <div class="flex items-center space-x-3">
-                <img src="logo.jpg" alt="HIIT Ambala Logo" class="h-14 w-auto object-contain">
-                <div class="flex flex-col leading-tight">
-                    <span class="font-extrabold text-xl tracking-tight text-slate-800">HARYANA INSTITUTE</span>
-                    <span class="text-sm font-semibold text-slate-500">OF INFO TECH - AMBALA</span>
+            <div class="flex items-center space-x-2 sm:space-x-3">
+                <img src="logo.jpg" alt="Logo" class="h-10 w-auto sm:h-12"> <div class="leading-tight block"> 
+                    <p class="font-extrabold text-sm sm:text-lg text-slate-800 tracking-tight">
+                        HARYANA INSTITUTE
+                    </p>
+                    <p class="text-[10px] sm:text-xs font-semibold text-slate-500">
+                        OF INFO TECH - AMBALA
+                    </p>
                 </div>
             </div>
 
             <div class="hidden md:flex space-x-8 font-bold text-slate-600">
-                <a href="index.html" class="hover:text-blue-600 transition">Home</a>
-                <a href="#journey" class="hover:text-blue-600 transition">Our Journey</a>
-                <a href="#accreditation" class="hover:text-blue-600 transition">Accreditations</a>
-                <a href="#contact" class="hover:text-blue-600 transition">Contact</a>
+                <a href="index.html" class="hover:text-blue-600">Home</a>
+                <a href="#journey" class="hover:text-blue-600">Our Journey</a>
+                <a href="#accreditation" class="hover:text-blue-600">Accreditations</a>
+                <a href="#contact" class="hover:text-blue-600">Contact</a>
             </div>
 
-            <button id="openApplyForm" class="bg-blue-600 text-white px-7 py-2.5 rounded-full font-bold hover:bg-blue-700 transition transform active:scale-95">
-                Apply 2026
-            </button>
+            <div class="flex items-center space-x-2 sm:space-x-4">
+                <button id="openApplyForm" class="bg-blue-600 text-white px-3 py-2 sm:px-5 sm:py-2 rounded-full font-bold text-[10px] sm:text-sm uppercase tracking-wider shadow-md hover:bg-blue-700 transition-all">
+                    Apply 2026
+                </button>
 
+                <button id="menu-btn" class="md:hidden text-slate-600 outline-none p-1">
+                    <svg class="w-7 h-7 sm:w-8 sm:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-slate-100 shadow-lg animate-fade-in-down">
+        <div class="flex flex-col p-5 space-y-4 font-bold text-slate-600">
+            <a href="index.html" class="border-b pb-2 hover:text-blue-600">Home</a>
+            <a href="#journey" class="border-b pb-2 hover:text-blue-600">Our Journey</a>
+            <a href="#accreditation" class="border-b pb-2 hover:text-blue-600">Accreditations</a>
+            <a href="#contact" class="hover:text-blue-600">Contact</a>
         </div>
     </div>
 </nav>
@@ -190,6 +206,22 @@
             submitBtn.innerHTML = "Submit Application";
             submitBtn.disabled = false;
         }, 1500);
+    });
+
+    const btn = document.getElementById('menu-btn');
+    const menu = document.getElementById('mobile-menu');
+
+    // Button click hone par menu show/hide karega
+    btn.addEventListener('click', () => {
+        menu.classList.toggle('hidden');
+    });
+
+    // Jab kisi link par click ho, toh menu apne aap band ho jaye
+    const links = menu.querySelectorAll('a');
+    links.forEach(link => {
+        link.addEventListener('click', () => {
+            menu.classList.add('hidden');
+        });
     });
 </script>
 
